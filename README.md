@@ -26,7 +26,7 @@ However, the steps are pretty similar, you just have to put the files to the cor
 ## The manual way:
 
 1. Add your project folder
-2. move your project into PlatformIO layout (that is, source codes in `/src`, and library files in `lib`)
+2. move your project into PlatformIO layout (that is, source codes in `/src`, and library files in `/lib`)
 3. create `platformio.ini`, and put in the following content:
 ```
 [env:n79e85x]
