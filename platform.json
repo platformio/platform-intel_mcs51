@@ -1,0 +1,46 @@
+{
+  "name": "mcs51",
+  "title": "MCS 8051/8052",
+  "description": "Intel 8051/8052 8-bit and 3rd party compatible MCUs those which are used almost everywhere.",
+  "url": "https://en.wikipedia.org/wiki/Intel_MCS-51",
+  "homepage": "https://github.com/Palatis/platform-mcs51",
+  "license": "Apache-2.0",
+  "engines": {
+    "platformio": "^3.0.0",
+    "scons": ">=2.3.0,<2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Palatis/platform-mcs51.git"
+  },
+  "version": "0.0.1",
+  "packageRepositories": [
+    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+    "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
+    "http://dl.platformio.org/packages/manifest.json",
+    "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json",
+    "https://github.com/Palatis/platform-mcs51/dl-packages/manifest.json"
+  ],
+  "frameworks": {
+    "naked": {
+      "package": "framework-nakedmcs51",
+      "script": "builder/frameworks/naked.py"
+    }
+  },
+  "packages": {
+    "toolchain-sdcc": {
+      "type": "toolchain",
+      "version": "~1.20500"
+    },
+    "framework-nakedmcs51": {
+      "type": "framework",
+      "optional": true,
+      "version": "~0.0.1"
+    },
+    "tool-srecord": {
+      "type": "uploader",
+      "optional": true,
+      "version": "~1.64"
+    }
+  }
+}
