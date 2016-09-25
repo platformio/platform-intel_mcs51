@@ -1,19 +1,13 @@
 # platform-mcs51
 MCS51: development platform for PlatformIO https://github.com/Palatis/platform-mcs51/wiki
 
+**This platform is EXPERIMENTAL, expect things to fail.**
+
 # HOWTO (Setup Platform.io for MCS-51)
-These instructions are targeted for Linux. If you're on another platform, you're on your own.
 
-However, the steps are pretty similar, you just have to put the files to the correct location...
+You only need one magic command:
 
-1. `$ cd ~/.platformio/frameworks`
-2. `$ git clone https://github.com/Palatis/platform-mcs51.git mcs51`
-3. `$ cd ~/.platformio/packages`
-4. `$ git clone https://github.com/Palatis/framework-nakedmcs51.git framework-nakedmcs51`
-5. Go to [SDCC](http://sdcc.sourceforge.net/) and download the snapshot matching your host platform. I'm using [sdcc-snapshot-amd64-unknown-linux2.5-20160924-9771.tar.bz2](http://sourceforge.net/projects/sdcc/files/snapshot_builds/amd64-unknown-linux2.5/sdcc-snapshot-amd64-unknown-linux2.5-20160924-9771.tar.bz2/download) because I'm on Linux AMD64.
-6. `$ git clone https://github.com/Palatis/toolchain-sdcc.git toolchain-sdcc`
-7. `$ cd toolchain-sdcc`
-8. `$ tar vxf <path>/<to>/<download>/sdcc-snapshot-amd64-unknown-linux2.5-20160924-9771.tar.bz2`
+- `$ platformio platforms install https://github.com/Palatis/platform-mcs51.git`
 
 # HOWTO (Setup your MCS-51 project)
 ## The simple way:
