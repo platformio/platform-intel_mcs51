@@ -60,17 +60,14 @@ env.Replace(
     AR="sdar",
     AS="sdas8051",
     CC="sdcc",
-    # CXX="sdcc",
+    LD="sdld",
     OBJCOPY="sdobjcopy",
-    # RANLIB="avr-ranlib",
-    # SIZETOOL="avr-size",
-
-    # ARFLAGS=["rcs"],
-
-    # ASFLAGS=["-x", "assembler-with-cpp"],
+    OBJSUFFIX=".rel",
+    LIBSUFFIX=".lib",
+    RANLIB="sdranlib",
 
     CFLAGS=[
-        "--std-c11"
+        "--std-sdcc11"
     ],
 
     CCFLAGS=[
@@ -80,12 +77,6 @@ env.Replace(
         "-m$BOARD_MCU"
     ],
 
-    #CXXFLAGS=[
-    #    "-fno-exceptions",
-    #    "-fno-threadsafe-statics",
-    #    "-std=gnu++11"
-    #],
-
     CPPDEFINES=[
         "F_CPU=$BOARD_F_CPU",
         "F_OSC=$BOARD_F_FLASH", # FIXME: using $BOARD_F_FLASH here because
@@ -94,17 +85,16 @@ env.Replace(
     ],
 
     LINKFLAGS=[
-        # "-Os",
         "-m$BOARD_MCU",
-    #    "-Wl,--gc-sections,--relax"
+        "--out-fmt-ihx"
     ],
 
-    LIBS=["m"],
+    # LIBS=["m"],
 
     # SIZEPRINTCMD='$SIZETOOL --mcu=$BOARD_MCU -C -d $SOURCES',
 
     PROGNAME="firmware",
-    PROGSUFFIX=".elf"
+    PROGSUFFIX=".ihx"
 )
 
 env.Append(
@@ -143,20 +133,20 @@ env.Append(
     )
 )
 
-env.Replace(
-    UPLOADER="avrdude",
-    UPLOADERFLAGS=[
-        "-p", "$BOARD_MCU",
-        "-C",
-        '"%s"' % join(
-            env.PioPlatform().get_package_dir("tool-srecord") or "",
-	    "avrdude.conf"),
-        "-c", "$UPLOAD_PROTOCOL"
-    ],
-    UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -D -U flash:w:$SOURCES:i',
-    UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
-    PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
-)
+# env.Replace(
+#     UPLOADER="avrdude",
+#     UPLOADERFLAGS=[
+#         "-p", "$BOARD_MCU",
+#         "-C",
+#         '"%s"' % join(
+#             env.PioPlatform().get_package_dir("tool-srecord") or "",
+# 	    "avrdude.conf"),
+#         "-c", "$UPLOAD_PROTOCOL"
+#     ],
+#     UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -D -U flash:w:$SOURCES:i',
+#     UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
+#     PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
+# )
 if int(ARGUMENTS.get("PIOVERBOSE", 0)):
     env.Prepend(UPLOADERFLAGS=["-v"])
 
@@ -164,45 +154,26 @@ if int(ARGUMENTS.get("PIOVERBOSE", 0)):
 # Target: Build executable and linkable firmware
 #
 
-target_elf = env.BuildProgram()
-
-#
-# Target: Build the .hex file
-#
-
-if "uploadlazy" in COMMAND_LINE_TARGETS:
-    target_firm = join("$BUILD_DIR", "firmware.hex")
-else:
-    target_firm = env.ElfToHex(join("$BUILD_DIR", "firmware"), target_elf)
+target_firm = env.BuildProgram()
 
 #
 # Target: Print binary size
 #
 
-target_size = env.Alias(
-    "size", target_elf,
-    env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
-AlwaysBuild(target_size)
+# target_size = env.Alias(
+#     "size", target_firm,
+#     env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
+# AlwaysBuild(target_size)
 
 #
 # Target: Upload by default .hex file
 #
 
 upload = env.Alias(
-    ["upload", "uploadlazy"], target_firm,
+    ["upload"], target_firm,
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
      env.VerboseAction("$UPLOADHEXCMD", "Uploading $SOURCE")])
 AlwaysBuild(upload)
-
-#
-# Target: Upload EEPROM data (from EEMEM directive)
-#
-
-uploadeep = env.Alias(
-    "uploadeep", env.ElfToEep(join("$BUILD_DIR", "firmware"), target_elf),
-    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-     env.VerboseAction("$UPLOADEEPCMD", "Uploading $SOURCE")])
-AlwaysBuild(uploadeep)
 
 #
 # Target: Upload firmware using external programmer
@@ -220,4 +191,5 @@ AlwaysBuild(program)
 # Setup default targets
 #
 
-Default([target_firm, target_size])
+# Default([target_firm, target_size])
+Default([target_firm])

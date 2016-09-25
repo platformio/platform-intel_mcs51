@@ -18,8 +18,15 @@
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
     "http://dl.platformio.org/packages/manifest.json",
-    "https://raw.githubusercontent.com/eerimoq/simba/master/make/platformio/manifest.json",
-    "https://github.com/Palatis/platform-mcs51/dl-packages/manifest.json"
+    "https://dl.bintray.com/Palatis/platformio-dl-packages/manifest.json",
+    {
+      "framework-nakedmcs51": [
+        {
+          "url": "https://github.com/Palatis/framework-nakedmcs51/archive/master.zip",
+          "version": "0.0.1"
+        }
+      ]
+    }
   ],
   "frameworks": {
     "naked": {
@@ -36,11 +43,6 @@
       "type": "framework",
       "optional": true,
       "version": "~0.0.1"
-    },
-    "tool-srecord": {
-      "type": "uploader",
-      "optional": true,
-      "version": "~1.64"
     }
   }
 }
