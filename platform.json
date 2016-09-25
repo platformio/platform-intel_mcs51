@@ -18,47 +18,7 @@
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
     "http://dl.platformio.org/packages/manifest.json",
-    "https://dl.bintray.com/Palatis/platformio-dl-packages/manifest.json",
-    {
-      "framework-nakedmcs51": [
-        {
-          "url": "https://github.com/Palatis/framework-nakedmcs51/archive/v0.0.1.tar.gz",
-          "version": "0.0.1"
-        }
-      ],
-      "toolchain-sdcc": [
-        {
-          "url": "https://dl.bintray.com/palatis/platformio-dl-packages/toolchain-sdcc-universal-apple-macosx-1.30603.9771.tar.bz2",
-          "sha1": "09afdd8ba1b804648af000ec1e5f76767d5c3fbc",
-          "version": "1.30603.9771",
-          "system": ["darwin_x86_64", "darwin_i386"]
-        },
-        {
-          "url": "https://dl.bintray.com/palatis/platformio-dl-packages/toolchain-sdcc-i386-unknown-linux2.6-1.30603.9771.tar.bz2",
-          "sha1": "7957f0b414086dfd56169c423f6cfc085456cab0",
-          "version": "1.30603.9771",
-          "system": ["linux_i686"]
-        },
-        {
-          "url": "https://dl.bintray.com/palatis/platformio-dl-packages/toolchain-sdcc-amd64-unknown-linux2.5-1.30603.9771.tar.bz2",
-          "sha1": "0bff1e8f59ee469b98be4599e893a1478821f33b",
-          "version": "1.30603.9771",
-          "system": ["linux_x86_64"]
-        },
-        {
-          "url": "https://dl.bintray.com/palatis/platformio-dl-packages/toolchain-sdcc-i586-mingw32msvc-1.30603.9771.tar.bz2",
-          "sha1": "3537ad34cdcb1164399afed00ea6e3a75d2d9c0d",
-          "version": "1.30603.9771",
-          "system": ["windows", "windows_x86"]
-        },
-        {
-          "url": "https://dl.bintray.com/palatis/platformio-dl-packages/toolchain-sdcc-x86_64-w64-mingw32-1.30603.9771.tar.bz2",
-          "sha1": "31747d6f56eaade4cbf3618c31ad660f2d4dca24",
-          "version": "1.30603.9771",
-          "system": ["windows_amd64"]
-        }
-      ]
-    }
+    "https://dl.bintray.com/palatis/platformio-dl-packages/manifest.json"
   ],
   "frameworks": {
     "naked": {
