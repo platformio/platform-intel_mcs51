@@ -1,0 +1,19 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DN79E85X -DN79E854 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_N79E85X --iram-size 256 --xram-size 256 --code-size 8192 --stack-size 128",
+    "f_cpu": "22118400L",
+    "size_iram": 256,
+    "size_xram": 256,
+    "size_code": 8192,
+    "mcu": "mcs51",
+    "variant": "n79e85x"
+  },
+  "frameworks": [
+    "naked"
+  ],
+  "upload": {},
+  "name": "n79e854",
+  "url": "https://github.com/Palatis/platform-mcs51/wiki",
+  "vendor": "Nuvoton"
+}

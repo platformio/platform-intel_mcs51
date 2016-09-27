@@ -54,6 +54,18 @@ def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
     before_ports = get_serialports()
 
 
+def __getSize(size_type, env):
+    # FIXME: i don't really know how to do this right. see:
+    #        https://community.platformio.org/t/missing-integers-in-board-extra-flags-in-board-json/821
+    return str(env.BoardConfig().get("build", {
+        # defaults
+        "size_heap": 1024,
+        "size_iram": 256,
+        "size_xram": 65536,
+        "size_code": 65536,
+    })[size_type])
+
+
 env = DefaultEnvironment()
 
 env.Replace(
@@ -61,10 +73,10 @@ env.Replace(
     AS="sdas8051",
     CC="sdcc",
     LD="sdld",
+    RANLIB="sdranlib",
     OBJCOPY="sdobjcopy",
     OBJSUFFIX=".rel",
     LIBSUFFIX=".lib",
-    RANLIB="sdranlib",
 
     CFLAGS=[
         "--std-sdcc11"
@@ -72,21 +84,22 @@ env.Replace(
 
     CCFLAGS=[
         "--opt-code-size",  # optimize for size
-        "--peep-asm", # peephole optimization on inline assembly
-        "--peep-return", # peephole optimization for return instructions
+        "--peep-return",    # peephole optimization for return instructions
         "-m$BOARD_MCU"
     ],
 
     CPPDEFINES=[
         "F_CPU=$BOARD_F_CPU",
-        "F_OSC=$BOARD_F_FLASH", # FIXME: using $BOARD_F_FLASH here because
-                                #        I don't know how to add an env var in
-                                #        Platform.IO...
+        "HEAP_SIZE=" + __getSize("size_heap", env)
     ],
 
     LINKFLAGS=[
         "-m$BOARD_MCU",
-        "--out-fmt-ihx"
+        "--iram-size", __getSize("size_iram", env),
+        "--xram-size", __getSize("size_xram", env),
+        "--code-size", __getSize("size_code", env),
+        "$BUILD_FLAGS",
+        "--out-fmt-ihx",
     ],
 
     # LIBS=["m"],
@@ -133,20 +146,6 @@ env.Append(
     )
 )
 
-# env.Replace(
-#     UPLOADER="avrdude",
-#     UPLOADERFLAGS=[
-#         "-p", "$BOARD_MCU",
-#         "-C",
-#         '"%s"' % join(
-#             env.PioPlatform().get_package_dir("tool-srecord") or "",
-# 	    "avrdude.conf"),
-#         "-c", "$UPLOAD_PROTOCOL"
-#     ],
-#     UPLOADHEXCMD='$UPLOADER $UPLOADERFLAGS -D -U flash:w:$SOURCES:i',
-#     UPLOADEEPCMD='$UPLOADER $UPLOADERFLAGS -U eeprom:w:$SOURCES:i',
-#     PROGRAMHEXCMD='$UPLOADER $UPLOADERFLAGS -U flash:w:$SOURCES:i'
-# )
 if int(ARGUMENTS.get("PIOVERBOSE", 0)):
     env.Prepend(UPLOADERFLAGS=["-v"])
 
@@ -155,15 +154,6 @@ if int(ARGUMENTS.get("PIOVERBOSE", 0)):
 #
 
 target_firm = env.BuildProgram()
-
-#
-# Target: Print binary size
-#
-
-# target_size = env.Alias(
-#     "size", target_firm,
-#     env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
-# AlwaysBuild(target_size)
 
 #
 # Target: Upload by default .hex file
@@ -186,10 +176,8 @@ program = env.Alias(
 
 AlwaysBuild(program)
 
-
 #
 # Setup default targets
 #
 
-# Default([target_firm, target_size])
 Default([target_firm])
