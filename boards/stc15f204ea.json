@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": [
+        ""
+    ],
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 0,
+    "size_code": 4096,
+    "size_heap": 64,
+    "mcu": "mcs51",
+    "variant": "stc15f204ea"
+  },
+  "frameworks": [
+  ],
+  "upload": {},
+  "name": "stc15f204ea",
+  "url": "https://github.com/zerog2k/platform-mcs51/wiki",
+  "vendor": "STC"
+}
