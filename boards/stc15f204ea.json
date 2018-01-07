@@ -1,15 +1,15 @@
 {
   "build": {
-    "core": "naked",
     "extra_flags": [
         ""
     ],
-    "f_cpu": "11059200L",
+    "f_cpu": "11059200",
     "size_iram": 256,
     "size_xram": 0,
     "size_code": 4096,
     "size_heap": 64,
     "mcu": "mcs51",
+    "cpu": "8051",
     "variant": "stc15f204ea"
   },
   "frameworks": [
