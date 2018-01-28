@@ -3,7 +3,7 @@
   "title": "MCS 8051/8052",
   "description": "Intel 8051/8052 8-bit and 3rd party compatible MCUs those which are used almost everywhere.",
   "url": "https://en.wikipedia.org/wiki/Intel_MCS-51",
-  "homepage": "https://github.com/Palatis/platform-mcs51",
+  "homepage": "https://github.com/platformio/platform-mcs51",
   "license": "Apache-2.0",
   "engines": {
     "platformio": "^3.0.0",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Palatis/platform-mcs51.git"
+    "url": "https://github.com/platformio/platform-mcs51.git"
   },
   "version": "0.0.2",
   "packageRepositories": [

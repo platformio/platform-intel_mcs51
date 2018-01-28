@@ -1,5 +1,5 @@
 # platform-mcs51
-MCS51: development platform for PlatformIO https://github.com/Palatis/platform-mcs51/wiki
+MCS51: development platform for PlatformIO https://github.com/platformio/platform-mcs51/wiki
 
 **This platform is EXPERIMENTAL, expect things to fail.**
 
@@ -7,7 +7,7 @@ MCS51: development platform for PlatformIO https://github.com/Palatis/platform-m
 
 You only need one magic command:
 
-- `$ platformio platforms install https://github.com/Palatis/platform-mcs51.git`
+- `$ platformio platforms install https://github.com/platformio/platform-mcs51.git`
 
 # HOWTO (Setup your MCS-51 project)
 ## The simple way:
