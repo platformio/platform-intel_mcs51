@@ -165,15 +165,9 @@ target_firm = env.BuildProgram()
 if env.subst("$UPLOAD_PROTOCOL") == "stcgal":
     if "BOARD" in env and env.BoardConfig().get("vendor") == "STC":
         f_cpu_khz = int(env.BoardConfig().get("build.f_cpu")) / 1000
-        if env.BoardConfig().get("build.variant") == "stc15f204ea":
-            stc_protocol = "stc15a"
-        else:
-            stc_protocol = "auto"
-
         env.Replace(
                 UPLOAD_OPTIONS = [
                     "-p", "$UPLOAD_PORT",
-                    "-P", stc_protocol,
                     "-t", int(f_cpu_khz),
                     "-a"
                 ],
