@@ -159,6 +159,22 @@ target_firm = env.BuildProgram()
 # Target: Upload by default .hex file
 #
 
+# options for stcgal uploader tool
+# https://github.com/grigorig/stcgal
+
+if env.subst("$UPLOAD_PROTOCOL") == "stcgal":
+    if "BOARD" in env and env.BoardConfig().get("vendor") == "STC":
+        f_cpu_khz = int(env.BoardConfig().get("build.f_cpu")) / 1000
+        env.Replace(
+                UPLOAD_OPTIONS = [
+                    "-p", "$UPLOAD_PORT",
+                    "-t", int(f_cpu_khz),
+                    "-a"
+                ],
+                STCGALCMD="stcgal",
+                UPLOADHEXCMD = "$STCGALCMD $UPLOAD_OPTIONS $UPLOAD_FLAGS $SOURCE"
+        )
+
 upload = env.Alias(
     ["upload"], target_firm,
     [env.VerboseAction(BeforeUpload, "Looking for upload port..."),

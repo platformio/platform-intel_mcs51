@@ -13,7 +13,7 @@ You only need one magic command:
 ## The simple way:
 
 1. PlatformIO -> Initialize or Update PlatformIO Project
-2. Select Board -> Nuvoton -> n79e85x (because this is the only "supported" board right now...)
+2. Select Board -> Nuvoton -> n79e85x
 3. Choose a directory
 4. Process!
 
@@ -25,5 +25,22 @@ You only need one magic command:
 ```
 [env:n79e85x]
 platform = mcs51
-board = n79e85x ; because this is the only "supported" board right now...
+board = n79e85x ;
 framework = naked
+```
+
+## mcu support
+### Nuvoton
+* n79e85x
+### STC
+(Experimental!)
+* STC15F204EA (Ram: 256, Flash: 4k)
+* STC15W404AS (Ram: 256 + 256, Flash: 4k)
+* STC15W408AS (Ram: 256 + 256, Flash: 8k)
+
+example:
+```
+board = stc15w408as
+upload_protocol = stcgal
+upload_port = /dev/ttyUSB0
+```

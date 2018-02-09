@@ -1,0 +1,21 @@
+{
+  "build": {
+    "extra_flags": [
+        ""
+    ],
+    "f_cpu": "11059200",
+    "size_iram": 256,
+    "size_xram": 256,
+    "size_code": 8096,
+    "size_heap": 128,
+    "mcu": "mcs51",
+    "cpu": "8051",
+    "variant": "stc15w408as"
+  },
+  "frameworks": [
+  ],
+  "upload": {},
+  "name": "stc15w408as",
+  "url": "https://github.com/platformio/platform-mcs51/wiki",
+  "vendor": "STC"
+}
