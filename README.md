@@ -1,10 +1,10 @@
-# Intel ARC32: development platform for [PlatformIO](http://platformio.org)
+# Intel MCS-51 (8051): development platform for [PlatformIO](http://platformio.org)
 [![Build Status](https://travis-ci.org/platformio/platform-intel_8051.svg?branch=develop)](https://travis-ci.org/platformio/platform-intel_8051)
-[![Build status](https://ci.appveyor.com/api/projects/status/o2mw4111t1yjqch7/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-intel_8051/branch/develop)
+[![Build status](https://ci.appveyor.com/api/projects/status/ja5fw2iw2mqegup5/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-intel_8051/branch/develop)
 
-ARC embedded processors are a family of 32-bit CPUs that are widely used in SoC devices for storage, home, mobile, automotive, and Internet of Things applications.
+The Intel MCS-51 (commonly termed 8051) is an internally Harvard architecture, complex instruction set computer (CISC) instruction set, single chip microcontroller (µC) series developed by Intel in 1980 for use in embedded systems.
 
-* [Home](http://platformio.org/platforms/intel_8051) (home page in PlatformIO Platform Registry)
+* [Home](http://platformio.org/platforms/intel_8051) (home page in PlatformIO Registry)
 * [Documentation](http://docs.platformio.org/page/platforms/intel_8051.html) (advanced usage, packages, boards, frameworks, etc.)
 
 # Usage
