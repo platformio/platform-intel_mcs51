@@ -12,7 +12,10 @@
   "frameworks": [
     "naked"
   ],
-  "upload": {},
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 8192
+  },
   "name": "n79e854",
   "url": "https://github.com/platformio/platform-mcs51/wiki",
   "vendor": "Nuvoton"
