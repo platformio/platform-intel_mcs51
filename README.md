@@ -1,46 +1,35 @@
-# platform-mcs51
-MCS51: development platform for PlatformIO https://github.com/platformio/platform-mcs51/wiki
+# Intel ARC32: development platform for [PlatformIO](http://platformio.org)
+[![Build Status](https://travis-ci.org/platformio/platform-intel_8051.svg?branch=develop)](https://travis-ci.org/platformio/platform-intel_8051)
+[![Build status](https://ci.appveyor.com/api/projects/status/o2mw4111t1yjqch7/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-intel_8051/branch/develop)
 
-**This platform is EXPERIMENTAL, expect things to fail.**
+ARC embedded processors are a family of 32-bit CPUs that are widely used in SoC devices for storage, home, mobile, automotive, and Internet of Things applications.
 
-# HOWTO (Setup Platform.io for MCS-51)
+* [Home](http://platformio.org/platforms/intel_8051) (home page in PlatformIO Platform Registry)
+* [Documentation](http://docs.platformio.org/page/platforms/intel_8051.html) (advanced usage, packages, boards, frameworks, etc.)
 
-You only need one magic command:
+# Usage
 
-- `$ platformio platforms install https://github.com/platformio/platform-mcs51.git`
+1. [Install PlatformIO](http://platformio.org)
+2. Create PlatformIO project and configure a platform option in [platformio.ini](http://docs.platformio.org/page/projectconf.html) file:
 
-# HOWTO (Setup your MCS-51 project)
-## The simple way:
+## Stable version
 
-1. PlatformIO -> Initialize or Update PlatformIO Project
-2. Select Board -> Nuvoton -> n79e85x
-3. Choose a directory
-4. Process!
-
-## The manual way:
-
-1. Add your project folder
-2. move your project into PlatformIO layout (that is, source codes in `/src`, and library files in `/lib`)
-3. create `platformio.ini`, and put in the following content:
-```
-[env:n79e85x]
-platform = mcs51
-board = n79e85x ;
-framework = naked
+```ini
+[env:stable]
+platform = intel_8051
+board = ...
+...
 ```
 
-## mcu support
-### Nuvoton
-* n79e85x
-### STC
-(Experimental!)
-* STC15F204EA (Ram: 256, Flash: 4k)
-* STC15W404AS (Ram: 256 + 256, Flash: 4k)
-* STC15W408AS (Ram: 256 + 256, Flash: 8k)
+## Development version
 
-example:
+```ini
+[env:development]
+platform = https://github.com/platformio/platform-intel_8051.git
+board = ...
+...
 ```
-board = stc15w408as
-upload_protocol = stcgal
-upload_port = /dev/ttyUSB0
-```
+
+# Configuration
+
+Please navigate to [documentation](http://docs.platformio.org/page/platforms/intel_8051.html).
