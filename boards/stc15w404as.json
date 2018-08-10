@@ -14,7 +14,10 @@
   },
   "frameworks": [
   ],
-  "upload": {},
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 4096
+  },
   "name": "stc15w404as",
   "url": "https://github.com/platformio/platform-mcs51/wiki",
   "vendor": "STC"

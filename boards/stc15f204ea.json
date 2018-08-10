@@ -14,7 +14,10 @@
   },
   "frameworks": [
   ],
-  "upload": {},
+  "upload": {
+    "maximum_ram_size": 256,
+    "maximum_size": 4096
+  },
   "name": "stc15f204ea",
   "url": "https://github.com/platformio/platform-mcs51/wiki",
   "vendor": "STC"
