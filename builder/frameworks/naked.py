@@ -54,22 +54,20 @@ env.Append(
 libs = []
 
 if "build.variant" in env.BoardConfig():
-    env.Append(
-        CPPPATH=[
+    env.Append(CPPPATH=[
+        join(FRAMEWORK_DIR, "variants",
+             env.BoardConfig().get("build.variant"))
+    ])
+    libs.append(
+        env.BuildLibrary(
+            join("$BUILD_DIR", "FrameworkNakedVariant"),
             join(FRAMEWORK_DIR, "variants",
-                 env.BoardConfig().get("build.variant"))
-        ]
-    )
-    libs.append(env.BuildLibrary(
-        join("$BUILD_DIR", "FrameworkNakedVariant"),
-        join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
-    ))
+                 env.BoardConfig().get("build.variant"))))
 
-envsafe = env.Clone()
-
-libs.append(envsafe.BuildLibrary(
-    join("$BUILD_DIR", "FrameworkNaked"),
-    join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
-))
+libs.append(
+    env.BuildLibrary(
+        join("$BUILD_DIR", "FrameworkNaked"),
+        join(FRAMEWORK_DIR, "cores",
+             env.BoardConfig().get("build.core"))))
 
 env.Prepend(LIBS=libs)
