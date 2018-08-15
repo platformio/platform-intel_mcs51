@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
+
 from SCons.Script import ARGUMENTS, AlwaysBuild, Default, DefaultEnvironment
 
 
@@ -28,6 +30,7 @@ def __getSize(size_type, env):
 
 
 env = DefaultEnvironment()
+board_config = env.BoardConfig()
 
 env.Replace(
     AR="sdar",
@@ -39,10 +42,8 @@ env.Replace(
     OBJSUFFIX=".rel",
     LIBSUFFIX=".lib",
 
-    # SIZEPRINTCMD='$SIZETOOL --mcu=$BOARD_MCU -C -d $SOURCES',
-
     PROGNAME="firmware",
-    PROGSUFFIX=".ihx"
+    PROGSUFFIX=".hex"
 )
 
 env.Append(
@@ -55,7 +56,7 @@ env.Append(
     CCFLAGS=[
         "--opt-code-size",  # optimize for size
         "--peep-return",    # peephole optimization for return instructions
-        "-m$BOARD_MCU"
+        "-m%s" % board_config.get("build.cpu")
     ],
 
     CPPDEFINES=[
@@ -64,14 +65,12 @@ env.Append(
     ],
 
     LINKFLAGS=[
-        "-m$BOARD_MCU",
+        "-m%s" % board_config.get("build.cpu"),
         "--iram-size", __getSize("size_iram", env),
         "--xram-size", __getSize("size_xram", env),
         "--code-size", __getSize("size_code", env),
         "--out-fmt-ihx"
-    ],
-
-    # LIBS=["m"],
+    ]
 )
 
 if int(ARGUMENTS.get("PIOVERBOSE", 0)):
@@ -86,26 +85,37 @@ AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
 #
-# Target: Upload by default .hex file
+# Target: Upload firmware
 #
 
-# options for stcgal uploader tool
-# https://github.com/grigorig/stcgal
+upload_protocol = env.subst("$UPLOAD_PROTOCOL")
+upload_actions = []
 
-if env.subst("$UPLOAD_PROTOCOL") == "stcgal":
-    if "BOARD" in env and env.BoardConfig().get("vendor") == "STC":
-        f_cpu_khz = int(env.BoardConfig().get("build.f_cpu")) / 1000
-        env.Replace(
-            UPLOAD_OPTIONS=["-p", "$UPLOAD_PORT", "-t",
-                            int(f_cpu_khz), "-a"],
-            STCGALCMD="stcgal",
-            UPLOADHEXCMD="$STCGALCMD $UPLOAD_OPTIONS $UPLOAD_FLAGS $SOURCE")
+if upload_protocol == "stcgal":
+    f_cpu_khz = int(board_config.get("build.f_cpu")) / 1000
+    env.Replace(
+        UPLOAD_OPTIONS=[
+            "-p", "$UPLOAD_PORT",
+            "-t", int(f_cpu_khz),
+            "-a"
+        ],
+        STCGALCMD="stcgal",
+        UPLOADCMD="$STCGALCMD $UPLOAD_OPTIONS $UPLOAD_FLAGS $SOURCE")
 
-upload = env.Alias(["upload"], target_firm, [
-    env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
-    env.VerboseAction("$UPLOADHEXCMD", "Uploading $SOURCE")
-])
-AlwaysBuild(upload)
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort,
+                          "Looking for upload port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
+
+# custom upload tool
+elif "UPLOADCMD" in env:
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+else:
+    sys.stderr.write("Warning! Unknown upload protocol %s\n" % upload_protocol)
+
+AlwaysBuild(env.Alias("upload", target_firm, upload_actions))
 
 #
 # Setup default targets
