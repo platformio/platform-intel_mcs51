@@ -29,6 +29,26 @@ def __getSize(size_type, env):
     })[size_type])
 
 
+def _parseSdccFlags(flags):
+    assert flags
+    if isinstance(flags, list):
+        flags = " ".join(flags)
+    flags = str(flags)
+    parsed_flags = []
+    unparsed_flags = []
+    prev_token = ""
+    for token in flags.split(" "):
+        if prev_token.startswith("--") and not token.startswith("-"):
+            parsed_flags.extend([prev_token, token])
+            prev_token = ""
+            continue
+        if prev_token:
+            unparsed_flags.append(prev_token)
+        prev_token = token
+    unparsed_flags.append(prev_token)
+    return (parsed_flags, unparsed_flags)
+
+
 env = DefaultEnvironment()
 board_config = env.BoardConfig()
 
@@ -76,11 +96,27 @@ env.Append(
 if int(ARGUMENTS.get("PIOVERBOSE", 0)):
     env.Prepend(UPLOADERFLAGS=["-v"])
 
+# parse manually SDCC flags
+if env.get("BUILD_FLAGS"):
+    _parsed, _unparsed = _parseSdccFlags(env.get("BUILD_FLAGS"))
+    env.Append(CCFLAGS=_parsed)
+    env['BUILD_FLAGS'] = _unparsed
+
+project_sdcc_flags = None
+if env.get("SRC_BUILD_FLAGS"):
+    project_sdcc_flags, _unparsed = _parseSdccFlags(env.get("SRC_BUILD_FLAGS"))
+    env['SRC_BUILD_FLAGS'] = _unparsed
+
 #
 # Target: Build executable and linkable firmware
 #
 
 target_firm = env.BuildProgram()
+
+if project_sdcc_flags:
+    env.Import("projenv")
+    projenv.Append(CCFLAGS=project_sdcc_flags)
+
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
