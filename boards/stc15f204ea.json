@@ -1,24 +1,24 @@
 {
   "build": {
-    "extra_flags": [
-        ""
-    ],
     "f_cpu": "11059200",
     "size_iram": 256,
     "size_xram": 0,
     "size_code": 4096,
     "size_heap": 64,
-    "mcu": "mcs51",
-    "cpu": "8051",
-    "variant": "stc15f204ea"
+    "mcu": "stc15f204ea",
+    "cpu": "mcs51"
   },
   "frameworks": [
   ],
   "upload": {
     "maximum_ram_size": 256,
-    "maximum_size": 4096
+    "maximum_size": 4096,
+    "protocol": "stcgal",
+    "protocols": [
+      "stcgal"
+    ]
   },
-  "name": "stc15f204ea",
+  "name": "Generic STC15F204EA",
   "url": "https://www.stcmicro.com/STC/STC15F204EA.html",
   "vendor": "STC"
 }
