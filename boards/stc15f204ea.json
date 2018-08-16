@@ -8,8 +8,7 @@
     "mcu": "stc15f204ea",
     "cpu": "mcs51"
   },
-  "frameworks": [
-  ],
+  "frameworks": [],
   "upload": {
     "maximum_ram_size": 256,
     "maximum_size": 4096,

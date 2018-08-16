@@ -17,26 +17,10 @@
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "http://dl.platformio.org/packages/manifest.json"
   ],
-  "frameworks": {
-    "naked": {
-      "package": "framework-nakedmcs51",
-      "script": "builder/frameworks/naked.py"
-    }
-  },
   "packages": {
     "toolchain-sdcc": {
       "type": "toolchain",
       "version": "~1.30603.0"
-    },
-    "framework-nakedmcs51": {
-      "type": "framework",
-      "optional": true,
-      "version": "~0.0.1"
-    },
-    "tool-sreccat": {
-      "type": "uploader",
-      "optional": "true",
-      "version": "~1.164"
     }
   }
 }

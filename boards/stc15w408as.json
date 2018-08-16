@@ -8,8 +8,7 @@
     "mcu": "stc15w408as",
     "cpu": "mcs51"
   },
-  "frameworks": [
-  ],
+  "frameworks": [],
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 8192,

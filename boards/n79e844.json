@@ -10,9 +10,7 @@
     "cpu": "mcs51",
     "variant": "n79e84x"
   },
-  "frameworks": [
-    "naked"
-  ],
+  "frameworks": [],
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 8192
