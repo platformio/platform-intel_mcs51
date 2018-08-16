@@ -130,13 +130,12 @@ upload_actions = []
 if upload_protocol == "stcgal":
     f_cpu_khz = int(board_config.get("build.f_cpu")) / 1000
     env.Replace(
-        UPLOAD_OPTIONS=[
+        UPLOADERFLAGS=[
             "-p", "$UPLOAD_PORT",
             "-t", int(f_cpu_khz),
             "-a"
         ],
-        STCGALCMD="stcgal",
-        UPLOADCMD="$STCGALCMD $UPLOAD_OPTIONS $UPLOAD_FLAGS $SOURCE")
+        UPLOADCMD="python3 stcgal.py $UPLOADERFLAGS $SOURCE")
 
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort,
