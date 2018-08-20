@@ -1,7 +1,7 @@
 {
   "name": "intel_mcs51",
   "title": "Intel MCS-51 (8051)",
-  "description": "The Intel MCS-51 (commonly termed 8051) is an internally Harvard architecture, complex instruction set computer (CISC) instruction set, single chip microcontroller (µC) series developed by Intel in 1980 for use in embedded systems.",
+  "description": "The Intel MCS-51 (commonly termed 8051) is an internally Harvard architecture, complex instruction set computer (CISC) instruction set, single chip microcontroller (uC) series developed by Intel in 1980 for use in embedded systems.",
   "url": "https://en.wikipedia.org/wiki/Intel_MCS-51",
   "homepage": "https://github.com/platformio/platform-intel_mcs51",
   "license": "Apache-2.0",
