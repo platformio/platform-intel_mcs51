@@ -62,6 +62,8 @@ env.Replace(
     OBJSUFFIX=".rel",
     LIBSUFFIX=".lib",
 
+    SIZEPRINTCMD='"$PYTHONEXE" -c "from __future__ import print_function; print(open(\\"$BUILD_DIR/${PROGNAME}.mem\\").read())"',
+
     PROGNAME="firmware",
     PROGSUFFIX=".hex"
 )
@@ -119,6 +121,15 @@ if project_sdcc_flags:
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
+
+#
+# Target: Print binary size
+#
+
+target_size = env.Alias(
+    "size", target_firm,
+    env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
+AlwaysBuild(target_size)
 
 #
 # Target: Upload firmware
