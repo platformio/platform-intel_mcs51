@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import sys
+from os.path import join
 
 from SCons.Script import ARGUMENTS, AlwaysBuild, Default, DefaultEnvironment
 
@@ -61,8 +62,11 @@ env.Replace(
     OBJCOPY="sdobjcopy",
     OBJSUFFIX=".rel",
     LIBSUFFIX=".lib",
+    SIZETOOL=join(env.PioPlatform().get_dir(), "builder", "size.py"),
 
-    SIZEPRINTCMD='"$PYTHONEXE" -c "from __future__ import print_function; print(open(\\"$BUILD_DIR/${PROGNAME}.mem\\").read())"',
+    SIZECHECKCMD='$PYTHONEXE $SIZETOOL $SOURCES',
+    SIZEPRINTCMD='"$PYTHONEXE" $SIZETOOL $SOURCES',
+    SIZEPROGREGEXP=r"^ROM/EPROM/FLASH\s+[a-fx\d]+\s+[a-fx\d]+\s+(\d+).*",
 
     PROGNAME="firmware",
     PROGSUFFIX=".hex"
@@ -167,4 +171,4 @@ AlwaysBuild(env.Alias("upload", target_firm, upload_actions))
 # Setup default targets
 #
 
-Default([target_buildprog])
+Default([target_buildprog, target_size])
