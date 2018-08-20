@@ -1,46 +1,35 @@
-# platform-mcs51
-MCS51: development platform for PlatformIO https://github.com/platformio/platform-mcs51/wiki
+# Intel MCS-51 (8051): development platform for [PlatformIO](http://platformio.org)
+[![Build Status](https://travis-ci.org/platformio/platform-intel_mcs51.svg?branch=develop)](https://travis-ci.org/platformio/platform-intel_mcs51)
+[![Build status](https://ci.appveyor.com/api/projects/status/0207sb475heyoaxa/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-intel-mcs51/branch/develop)
 
-**This platform is EXPERIMENTAL, expect things to fail.**
+The Intel MCS-51 (commonly termed 8051) is an internally Harvard architecture, complex instruction set computer (CISC) instruction set, single chip microcontroller (µC) series developed by Intel in 1980 for use in embedded systems.
 
-# HOWTO (Setup Platform.io for MCS-51)
+* [Home](http://platformio.org/platforms/intel_mcs51) (home page in PlatformIO Registry)
+* [Documentation](http://docs.platformio.org/page/platforms/intel_mcs51.html) (advanced usage, packages, boards, frameworks, etc.)
 
-You only need one magic command:
+# Usage
 
-- `$ platformio platforms install https://github.com/platformio/platform-mcs51.git`
+1. [Install PlatformIO](http://platformio.org)
+2. Create PlatformIO project and configure a platform option in [platformio.ini](http://docs.platformio.org/page/projectconf.html) file:
 
-# HOWTO (Setup your MCS-51 project)
-## The simple way:
+## Stable version
 
-1. PlatformIO -> Initialize or Update PlatformIO Project
-2. Select Board -> Nuvoton -> n79e85x
-3. Choose a directory
-4. Process!
-
-## The manual way:
-
-1. Add your project folder
-2. move your project into PlatformIO layout (that is, source codes in `/src`, and library files in `/lib`)
-3. create `platformio.ini`, and put in the following content:
-```
-[env:n79e85x]
-platform = mcs51
-board = n79e85x ;
-framework = naked
+```ini
+[env:stable]
+platform = intel_mcs51
+board = ...
+...
 ```
 
-## mcu support
-### Nuvoton
-* n79e85x
-### STC
-(Experimental!)
-* STC15F204EA (Ram: 256, Flash: 4k)
-* STC15W404AS (Ram: 256 + 256, Flash: 4k)
-* STC15W408AS (Ram: 256 + 256, Flash: 8k)
+## Development version
 
-example:
+```ini
+[env:development]
+platform = https://github.com/platformio/platform-intel_mcs51.git
+board = ...
+...
 ```
-board = stc15w408as
-upload_protocol = stcgal
-upload_port = /dev/ttyUSB0
-```
+
+# Configuration
+
+Please navigate to [documentation](http://docs.platformio.org/page/platforms/intel_mcs51.html).

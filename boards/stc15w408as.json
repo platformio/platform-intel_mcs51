@@ -1,24 +1,23 @@
 {
   "build": {
-    "extra_flags": [
-        ""
-    ],
     "f_cpu": "11059200",
     "size_iram": 256,
     "size_xram": 256,
     "size_code": 8192,
     "size_heap": 128,
-    "mcu": "mcs51",
-    "cpu": "8051",
-    "variant": "stc15w408as"
+    "mcu": "stc15w408as",
+    "cpu": "mcs51"
   },
-  "frameworks": [
-  ],
+  "frameworks": [],
   "upload": {
     "maximum_ram_size": 512,
-    "maximum_size": 8192
+    "maximum_size": 8192,
+    "protocol": "stcgal",
+    "protocols": [
+      "stcgal"
+    ]
   },
-  "name": "stc15w408as",
+  "name": "Generic STC15W408AS",
   "url": "https://www.stcmicro.com/STC/STC15W408AS.html",
   "vendor": "STC"
 }

@@ -12,46 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
-    Builder for MCS-51 series of microcontrollers
-"""
-
+import sys
 from os.path import join
-from time import sleep
 
-from SCons.Script import (ARGUMENTS, COMMAND_LINE_TARGETS, AlwaysBuild,
-                          Builder, Default, DefaultEnvironment)
-
-from platformio.util import get_serialports
-
-
-def BeforeUpload(target, source, env):  # pylint: disable=W0613,W0621
-
-    if "program" in COMMAND_LINE_TARGETS:
-        return
-
-    upload_options = {}
-    if "BOARD" in env:
-        upload_options = env.BoardConfig().get("upload", {})
-
-    # Deprecated: compatibility with old projects. Use `program` instead
-    if "usb" in env.subst("$UPLOAD_PROTOCOL"):
-        upload_options['require_upload_port'] = False
-        env.Replace(UPLOAD_SPEED=None)
-
-    if env.subst("$UPLOAD_SPEED"):
-        env.Append(UPLOADERFLAGS=["-b", "$UPLOAD_SPEED"])
-
-    if upload_options and not upload_options.get("require_upload_port", False):
-        return
-
-    env.AutodetectUploadPort()
-    env.Append(UPLOADERFLAGS=["-P", '"$UPLOAD_PORT"'])
-
-    if not upload_options.get("disable_flushing", False):
-        env.FlushSerialBuffer("$UPLOAD_PORT")
-
-    before_ports = get_serialports()
+from SCons.Script import ARGUMENTS, AlwaysBuild, Default, DefaultEnvironment
 
 
 def __getSize(size_type, env):
@@ -66,7 +30,28 @@ def __getSize(size_type, env):
     })[size_type])
 
 
+def _parseSdccFlags(flags):
+    assert flags
+    if isinstance(flags, list):
+        flags = " ".join(flags)
+    flags = str(flags)
+    parsed_flags = []
+    unparsed_flags = []
+    prev_token = ""
+    for token in flags.split(" "):
+        if prev_token.startswith("--") and not token.startswith("-"):
+            parsed_flags.extend([prev_token, token])
+            prev_token = ""
+            continue
+        if prev_token:
+            unparsed_flags.append(prev_token)
+        prev_token = token
+    unparsed_flags.append(prev_token)
+    return (parsed_flags, unparsed_flags)
+
+
 env = DefaultEnvironment()
+board_config = env.BoardConfig()
 
 env.Replace(
     AR="sdar",
@@ -77,6 +62,18 @@ env.Replace(
     OBJCOPY="sdobjcopy",
     OBJSUFFIX=".rel",
     LIBSUFFIX=".lib",
+    SIZETOOL=join(env.PioPlatform().get_dir(), "builder", "size.py"),
+
+    SIZECHECKCMD='$PYTHONEXE $SIZETOOL $SOURCES',
+    SIZEPRINTCMD='"$PYTHONEXE" $SIZETOOL $SOURCES',
+    SIZEPROGREGEXP=r"^ROM/EPROM/FLASH\s+[a-fx\d]+\s+[a-fx\d]+\s+(\d+).*",
+
+    PROGNAME="firmware",
+    PROGSUFFIX=".hex"
+)
+
+env.Append(
+    ASFLAGS=env.get("CCFLAGS", [])[:],
 
     CFLAGS=[
         "--std-sdcc11"
@@ -85,7 +82,7 @@ env.Replace(
     CCFLAGS=[
         "--opt-code-size",  # optimize for size
         "--peep-return",    # peephole optimization for return instructions
-        "-m$BOARD_MCU"
+        "-m%s" % board_config.get("build.cpu")
     ],
 
     CPPDEFINES=[
@@ -94,60 +91,27 @@ env.Replace(
     ],
 
     LINKFLAGS=[
-        "-m$BOARD_MCU",
+        "-m%s" % board_config.get("build.cpu"),
         "--iram-size", __getSize("size_iram", env),
         "--xram-size", __getSize("size_xram", env),
         "--code-size", __getSize("size_code", env),
-        "$BUILD_FLAGS",
-        "--out-fmt-ihx",
-    ],
-
-    # LIBS=["m"],
-
-    # SIZEPRINTCMD='$SIZETOOL --mcu=$BOARD_MCU -C -d $SOURCES',
-
-    PROGNAME="firmware",
-    PROGSUFFIX=".ihx"
-)
-
-env.Append(
-    ASFLAGS=env.get("CCFLAGS", [])[:],
-
-    BUILDERS=dict(
-        ElfToEep=Builder(
-            action=env.VerboseAction(" ".join([
-                "$OBJCOPY",
-                "-O",
-                "ihex",
-                "-j",
-                ".eeprom",
-                '--set-section-flags=.eeprom="alloc,load"',
-                "--no-change-warnings",
-                "--change-section-lma",
-                ".eeprom=0",
-                "$SOURCES",
-                "$TARGET"
-            ]), "Building $TARGET"),
-            suffix=".eep"
-        ),
-
-        ElfToHex=Builder(
-            action=env.VerboseAction(" ".join([
-                "$OBJCOPY",
-                "-O",
-                "ihex",
-                "-R",
-                ".eeprom",
-                "$SOURCES",
-                "$TARGET"
-            ]), "Building $TARGET"),
-            suffix=".hex"
-        )
-    )
+        "--out-fmt-ihx"
+    ]
 )
 
 if int(ARGUMENTS.get("PIOVERBOSE", 0)):
     env.Prepend(UPLOADERFLAGS=["-v"])
+
+# parse manually SDCC flags
+if env.get("BUILD_FLAGS"):
+    _parsed, _unparsed = _parseSdccFlags(env.get("BUILD_FLAGS"))
+    env.Append(CCFLAGS=_parsed)
+    env['BUILD_FLAGS'] = _unparsed
+
+project_sdcc_flags = None
+if env.get("SRC_BUILD_FLAGS"):
+    project_sdcc_flags, _unparsed = _parseSdccFlags(env.get("SRC_BUILD_FLAGS"))
+    env['SRC_BUILD_FLAGS'] = _unparsed
 
 #
 # Target: Build executable and linkable firmware
@@ -155,45 +119,56 @@ if int(ARGUMENTS.get("PIOVERBOSE", 0)):
 
 target_firm = env.BuildProgram()
 
-#
-# Target: Upload by default .hex file
-#
+if project_sdcc_flags:
+    env.Import("projenv")
+    projenv.Append(CCFLAGS=project_sdcc_flags)
 
-# options for stcgal uploader tool
-# https://github.com/grigorig/stcgal
-
-if env.subst("$UPLOAD_PROTOCOL") == "stcgal":
-    if "BOARD" in env and env.BoardConfig().get("vendor") == "STC":
-        f_cpu_khz = int(env.BoardConfig().get("build.f_cpu")) / 1000
-        env.Replace(
-                UPLOAD_OPTIONS = [
-                    "-p", "$UPLOAD_PORT",
-                    "-t", int(f_cpu_khz),
-                    "-a"
-                ],
-                STCGALCMD="stcgal",
-                UPLOADHEXCMD = "$STCGALCMD $UPLOAD_OPTIONS $UPLOAD_FLAGS $SOURCE"
-        )
-
-upload = env.Alias(
-    ["upload"], target_firm,
-    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-     env.VerboseAction("$UPLOADHEXCMD", "Uploading $SOURCE")])
-AlwaysBuild(upload)
+AlwaysBuild(env.Alias("nobuild", target_firm))
+target_buildprog = env.Alias("buildprog", target_firm, target_firm)
 
 #
-# Target: Upload firmware using external programmer
+# Target: Print binary size
 #
 
-program = env.Alias(
-    "program", target_firm,
-    [env.VerboseAction(BeforeUpload, "Looking for upload port..."),
-     env.VerboseAction("$PROGRAMHEXCMD", "Programming $SOURCE")])
+target_size = env.Alias(
+    "size", target_firm,
+    env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
+AlwaysBuild(target_size)
 
-AlwaysBuild(program)
+#
+# Target: Upload firmware
+#
+
+upload_protocol = env.subst("$UPLOAD_PROTOCOL")
+upload_actions = []
+
+if upload_protocol == "stcgal":
+    f_cpu_khz = int(board_config.get("build.f_cpu")) / 1000
+    env.Replace(
+        UPLOADERFLAGS=[
+            "-p", "$UPLOAD_PORT",
+            "-t", int(f_cpu_khz),
+            "-a"
+        ],
+        UPLOADCMD="python3 stcgal.py $UPLOADERFLAGS $SOURCE")
+
+    upload_actions = [
+        env.VerboseAction(env.AutodetectUploadPort,
+                          "Looking for upload port..."),
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
+
+# custom upload tool
+elif "UPLOADCMD" in env:
+    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
+
+else:
+    sys.stderr.write("Warning! Unknown upload protocol %s\n" % upload_protocol)
+
+AlwaysBuild(env.Alias("upload", target_firm, upload_actions))
 
 #
 # Setup default targets
 #
 
-Default([target_firm])
+Default([target_buildprog, target_size])

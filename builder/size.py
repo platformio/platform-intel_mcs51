@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 # Copyright 2014-present PlatformIO <contact@platformio.org>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from platformio.managers.platform import PlatformBase
+import sys
+from os.path import isfile
 
 
-class Mcs51Platform(PlatformBase):
-
-    def configure_default_packages(self, variables, targets):
-        if variables.get("board"):
-            board_config = self.board_config(variables.get("board"))
-
-        return PlatformBase.configure_default_packages(
-            self, variables, targets)
-
-    def on_run_err(self, line):  # pylint: disable=R0201
-        if "avrdude" in line:
-            self.on_run_out(line)
-        else:
-            PlatformBase.on_run_err(self, line)
+firmware_hex = sys.argv[1]
+assert isfile(firmware_hex)
+firmware_mem = firmware_hex[0:-3] + "mem"
+with open(firmware_mem) as fp:
+    print(fp.read())

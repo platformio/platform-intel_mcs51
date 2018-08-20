@@ -1,45 +1,30 @@
 {
-  "name": "mcs51",
-  "title": "MCS 8051/8052",
-  "description": "Intel 8051/8052 8-bit and 3rd party compatible MCUs those which are used almost everywhere.",
+  "name": "intel_mcs51",
+  "title": "Intel MCS-51 (8051)",
+  "description": "The Intel MCS-51 (commonly termed 8051) is an internally Harvard architecture, complex instruction set computer (CISC) instruction set, single chip microcontroller (uC) series developed by Intel in 1980 for use in embedded systems.",
   "url": "https://en.wikipedia.org/wiki/Intel_MCS-51",
-  "homepage": "https://github.com/platformio/platform-mcs51",
+  "homepage": "https://github.com/platformio/platform-intel_mcs51",
   "license": "Apache-2.0",
   "engines": {
-    "platformio": "^3.0.0",
-    "scons": ">=2.3.0,<2.6.0"
+    "platformio": "^3.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/platformio/platform-mcs51.git"
+    "url": "https://github.com/platformio/platform-intel_mcs51.git"
   },
-  "version": "0.0.2",
+  "version": "1.0.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
-    "http://dl.platformio.org/packages/manifest.json",
-    "https://dl.bintray.com/palatis/platformio-dl-packages/manifest.json"
+    "http://dl.platformio.org/packages/manifest.json"
   ],
-  "frameworks": {
-    "naked": {
-      "package": "framework-nakedmcs51",
-      "script": "builder/frameworks/naked.py"
-    }
-  },
   "packages": {
     "toolchain-sdcc": {
       "type": "toolchain",
-      "version": "~1.30603"
+      "version": "~1.30603.0"
     },
-    "framework-nakedmcs51": {
-      "type": "framework",
-      "optional": true,
-      "version": "~0.0.1"
-    },
-    "tool-sreccat": {
+    "tool-stcgal": {
       "type": "uploader",
-      "optional": "true",
-      "version": "~1.164"
+      "version": "~1.104.0"
     }
   }
 }
