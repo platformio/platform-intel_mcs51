@@ -4,7 +4,7 @@
 #include <compiler.h>
 
 // 适用于 STC89xx / STC90xx 系列的芯片
-// Modify by: ZnHoCn
+// Modified based on STC-ISP version by: ZnHoCn
 
 /* The following is STC additional SFR*/
 

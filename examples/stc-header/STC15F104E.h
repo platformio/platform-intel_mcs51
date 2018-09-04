@@ -5,7 +5,7 @@
 
 // 包含本头文件后,不用另外再包含"REG51.H"
 // 适用于 STC15F204EA / STC15F104E 系列的芯片
-// Modify by: ZnHoCn
+// Modified based on STC-ISP version by: ZnHoCn
 
 //内核特殊功能寄存器    //复位值    描述
 #define _ACC 0xE0
