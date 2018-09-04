@@ -1,6 +1,5 @@
-//#include <reg51.h>    // old header from SDCC
-#include "STC15Fxx.h"    // Official header from STC-ISP
-//#include "STC15F104E.h"    // Official header from STC-ISP
+#include <reg51.h>     // old header from SDCC
+//#include "STC15Fxx.h"  // Official header from STC-ISP
 #include <stdint.h>
 #include <stdio.h>
 #include "delay.h"
