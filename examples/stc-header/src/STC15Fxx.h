@@ -3,16 +3,16 @@
 
 #include <compiler.h>
 
+// 包含本头文件后,不用另外再包含"REG51.H"
+// 适用于 STC15Wxx / STC15Fxx 系列的芯片
+// Modified based on STC-ISP version by: ZnHoCn
+
 /////////////////////////////////////////////////
 //注意: STC15W4K32S4系列的芯片,上电后所有与PWM相关的IO口均为
 //      高阻态,需将这些口设置为准双向口或强推挽模式方可正常使用
 //相关IO: P0.6/P0.7/P1.6/P1.7/P2.1/P2.2
 //        P2.3/P2.7/P3.7/P4.2/P4.4/P4.5
 /////////////////////////////////////////////////
-
-// 包含本头文件后,不用另外再包含"REG51.H"
-// 适用于 STC15Wxx / STC15Fxx 系列的芯片
-// Modified based on STC-ISP version by: ZnHoCn
 
 //内核特殊功能寄存器    //复位值    描述
 #define _ACC 0xE0
@@ -404,7 +404,5 @@ SFR(PWMFDCR, 0xF7);     //xx00,0000 PWM外部异常检测控制寄存器
 #define PWM7T2H     (*(unsigned char volatile xdata *)0xff52)
 #define PWM7T2L     (*(unsigned char volatile xdata *)0xff53)
 #define PWM7CR      (*(unsigned char volatile xdata *)0xff54)
-
-/////////////////////////////////////////////////
 
 #endif

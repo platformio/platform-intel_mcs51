@@ -1,38 +1,25 @@
-#ifndef STC89xx_H
-#define STC89xx_H
+#ifndef STC12C54xx_H
+#define STC12C54xx_H
 
 #include <compiler.h>
 
-// 适用于 STC89xx / STC90xx 系列的芯片
+// 适用于 STC12C54xx 系列的芯片
 // Modified based on STC-ISP version by: ZnHoCn
 
-/* The following is STC additional SFR*/
+/* The following is STC additional SFR or change */
 
 /*
- * #define _AUXR 0x8e
- * SFR(AUXR, 0x8e);
- * #define _AUXR1 0xa2
- * SFR(AUXR1, 0xa2);
- * #define _IPH 0xb7
- * SFR(IPH, 0xb7);
- */
+#define _AUXR 0x8e
+SFR(AUXR, 0x8e);
+#define _IPH 0xb7
+SFR(IPH, 0xb7);
+*/
 
-#define _P4 0xe8
-SFR(P4, 0xe8);
-SBIT(P46, _P4, 6);
-SBIT(P45, _P4, 5);      //ISP下载需勾选"ALE脚用作P4.5口"
-SBIT(P44, _P4, 4);
-SBIT(P43, _P4, 3);
-SBIT(P42, _P4, 2);
-SBIT(P41, _P4, 1);
-SBIT(P40, _P4, 0);
-
-#define _XICON 0xc0
-SFR(XICON, 0xc0);
-
+/* Watchdog Timer Register */
 #define _WDT_CONTR 0xe1
 SFR(WDT_CONTR, 0xe1);
 
+/* ISP_IAP_EEPROM Register */
 #define _ISP_DATA 0xe2
 SFR(ISP_DATA, 0xe2);
 #define _ISP_ADDRH 0xe3
@@ -46,7 +33,117 @@ SFR(ISP_TRIG, 0xe6);
 #define _ISP_CONTR 0xe7
 SFR(ISP_CONTR, 0xe7);
 
-/* Above is STC additional SFR */
+/* System Clock Divider */
+#define _CLK_DIV 0xc7
+SFR(CLK_DIV, 0xc7);
+
+/* I_O Port Mode Set Register */
+#define _P0M0 0x93
+SFR(P0M0, 0x93);
+#define _P0M1 0x94
+SFR(P0M1, 0x94);
+#define _P1M0 0x91
+SFR(P1M0, 0x91);
+#define _P1M1 0x92
+SFR(P1M1, 0x92);
+#define _P2M0 0x95
+SFR(P2M0, 0x95);
+#define _P2M1 0x96
+SFR(P2M1, 0x96);
+#define _P3M0 0xb1
+SFR(P3M0, 0xb1);
+#define _P3M1 0xb2
+SFR(P3M1, 0xb2);
+
+/* SPI Register */
+#define _SPSTAT 0x84
+SFR(SPSTAT, 0x84);
+#define _SPCTL 0x85
+SFR(SPCTL, 0x85);
+#define _SPDAT 0x86
+SFR(SPDAT, 0x86);
+
+/* ADC Register */
+#define _ADC_CONTR 0xc5
+SFR(ADC_CONTR, 0xc5);
+#define _ADC_DATA 0xc6
+SFR(ADC_DATA, 0xc6);
+#define _ADC_LOW2 0xbe
+SFR(ADC_LOW2, 0xbe);
+
+/* PCA SFR */
+#define _CCON 0xD8
+SFR(CCON, 0xD8);
+#define _CMOD 0xD9
+SFR(CMOD, 0xD9);
+#define _CCAPM0 0xDA
+SFR(CCAPM0, 0xDA);
+#define _CCAPM1 0xDB
+SFR(CCAPM1, 0xDB);
+#define _CCAPM2 0xDC
+SFR(CCAPM2, 0xDC);
+#define _CCAPM3 0xDD
+SFR(CCAPM3, 0xDD);
+#define _CCAPM4 0xDE
+SFR(CCAPM4, 0xDE);
+#define _CCAPM5 0xDF
+SFR(CCAPM5, 0xDF);
+
+#define _CL 0xE9
+SFR(CL, 0xE9);
+#define _CCAP0L 0xEA
+SFR(CCAP0L, 0xEA);
+#define _CCAP1L 0xEB
+SFR(CCAP1L, 0xEB);
+#define _CCAP2L 0xEC
+SFR(CCAP2L, 0xEC);
+#define _CCAP3L 0xED
+SFR(CCAP3L, 0xED);
+#define _CCAP4L 0xEE
+SFR(CCAP4L, 0xEE);
+#define _CCAP5L 0xEF
+SFR(CCAP5L, 0xEF);
+
+#define _CH 0xF9
+SFR(CH, 0xF9);
+#define _CCAP0H 0xFA
+SFR(CCAP0H, 0xFA);
+#define _CCAP1H 0xFB
+SFR(CCAP1H, 0xFB);
+#define _CCAP2H 0xFC
+SFR(CCAP2H, 0xFC);
+#define _CCAP3H 0xFD
+SFR(CCAP3H, 0xFD);
+#define _CCAP4H 0xFE
+SFR(CCAP4H, 0xFE);
+#define _CCAP5H 0xFF
+SFR(CCAP5H, 0xFF);
+
+#define _PCA_PWM0 0xF2
+SFR(PCA_PWM0, 0xF2);
+#define _PCA_PWM1 0xF3
+SFR(PCA_PWM1, 0xF3);
+#define _PCA_PWM2 0xF4
+SFR(PCA_PWM2, 0xF4);
+#define _PCA_PWM3 0xF5
+SFR(PCA_PWM3, 0xF5);
+#define _PCA_PWM4 0xF6
+SFR(PCA_PWM4, 0xF6);
+#define _PCA_PWM5 0xF7
+SFR(PCA_PWM5, 0xF7);
+
+/*  CCON  */
+SBIT(CF, _CCON, 7);
+SBIT(CR, _CCON, 6);
+SBIT(CCF5, _CCON, 5);
+SBIT(CCF4, _CCON, 4);
+SBIT(CCF3, _CCON, 3);
+SBIT(CCF2, _CCON, 2);
+SBIT(CCF1, _CCON, 1);
+SBIT(CCF0, _CCON, 0);
+
+
+/* Above is STC additional SFR or change */
 
 /*--------------------------------------------------------------------------
 REG51F.H
@@ -130,16 +227,16 @@ SFR(TH1, 0x8D);
 SFR(IE, 0xA8);
 #define _IP 0xB8
 SFR(IP, 0xB8);
-#define _SCON 0x98
-SFR(SCON, 0x98);
+#define _SCON 0x99
+SFR(SCON, 0x99);
 #define _SBUF 0x99
 SFR(SBUF, 0x99);
 
 /*  80C51Fx/Rx Extensions  */
 #define _AUXR 0x8E
 SFR(AUXR, 0x8E);
-#define _AUXR1 0xA2
-SFR(AUXR1, 0xA2);
+//#define _AUXR1 0xA2
+//SFR(AUXR1, 0xA2);
 #define _SADDR 0xA9
 SFR(SADDR, 0xA9);
 #define _IPH 0xB7
@@ -158,47 +255,6 @@ SFR(RCAP2H, 0xCB);
 SFR(TL2, 0xCC);
 #define _TH2 0xCD
 SFR(TH2, 0xCD);
-
-/* PCA SFR
-#define _CCON 0xD8
-SFR(CCON, 0xD8);
-#define _CMOD 0xD9
-SFR(CMOD, 0xD9);
-#define _CCAPM0 0xDA
-SFR(CCAPM0, 0xDA);
-#define _CCAPM1 0xDB
-SFR(CCAPM1, 0xDB);
-#define _CCAPM2 0xDC
-SFR(CCAPM2, 0xDC);
-#define _CCAPM3 0xDD
-SFR(CCAPM3, 0xDD);
-#define _CCAPM4 0xDE
-SFR(CCAPM4, 0xDE);
-#define _CL 0xE9
-SFR(CL, 0xE9);
-#define _CCAP0L 0xEA
-SFR(CCAP0L, 0xEA);
-#define _CCAP1L 0xEB
-SFR(CCAP1L, 0xEB);
-#define _CCAP2L 0xEC
-SFR(CCAP2L, 0xEC);
-#define _CCAP3L 0xED
-SFR(CCAP3L, 0xED);
-#define _CCAP4L 0xEE
-SFR(CCAP4L, 0xEE);
-#define _CH 0xF9
-SFR(CH, 0xF9);
-#define _CCAP0H 0xFA
-SFR(CCAP0H, 0xFA);
-#define _CCAP1H 0xFB
-SFR(CCAP1H, 0xFB);
-#define _CCAP2H 0xFC
-SFR(CCAP2H, 0xFC);
-#define _CCAP3H 0xFD
-SFR(CCAP3H, 0xFD);
-#define _CCAP4H 0xFE
-SFR(CCAP4H, 0xFE);
-*/
 
 /*  BIT Registers  */
 /*  PSW   */
@@ -220,25 +276,6 @@ SBIT(IT1, _TCON, 2);
 SBIT(IE0, _TCON, 1);
 SBIT(IT0, _TCON, 0);
 
-/*  IE   */
-SBIT(EA, _IE, 7);
-SBIT(EC, _IE, 6);
-SBIT(ET2, _IE, 5);
-SBIT(ES, _IE, 4);
-SBIT(ET1, _IE, 3);
-SBIT(EX1, _IE, 2);
-SBIT(ET0, _IE, 1);
-SBIT(EX0, _IE, 0);
-
-/*  IP   */
-/*  SBIT(PPC, _IP, 6);*/
-SBIT(PT2, _IP, 5);
-SBIT(PS, _IP, 4);
-SBIT(PT1, _IP, 3);
-SBIT(PX1, _IP, 2);
-SBIT(PT0, _IP, 1);
-SBIT(PX0, _IP, 0);
-
 /*  P3  */
 SBIT(RD, _P3, 7);
 SBIT(WR, _P3, 6);
@@ -250,7 +287,7 @@ SBIT(TXD, _P3, 1);
 SBIT(RXD, _P3, 0);
 
 /*  SCON  */
-SBIT(SM0, _SCON, 7);        // alternatively "FE"
+SBIT(SM0, _SCON, 7); // alternatively "FE"
 SBIT(FE, _SCON, 7);
 SBIT(SM1, _SCON, 6);
 SBIT(SM2, _SCON, 5);
@@ -259,16 +296,6 @@ SBIT(TB8, _SCON, 3);
 SBIT(RB8, _SCON, 2);
 SBIT(TI, _SCON, 1);
 SBIT(RI, _SCON, 0);
-
-/*  P1  */
-/* PCA
-SBIT(CEX4, _P1, 7);
-SBIT(CEX3, _P1, 6);
-SBIT(CEX2, _P1, 5);
-SBIT(CEX1, _P1, 4);
-SBIT(CEX0, _P1, 3);
-SBIT(ECI, _P1, 2);
-*/
 
 SBIT(T2EX, _P1, 1);
 SBIT(T2, _P1, 0);
@@ -283,16 +310,31 @@ SBIT(TR2, _T2CON, 2);
 SBIT(C_T2, _T2CON, 1);
 SBIT(CP_RL2, _T2CON, 0);
 
-/*  CCON  */
-/*  PCA
-SBIT(CF, _CCON, 7);
-SBIT(CR, _CCON, 6);
+/* PCA Pin */
 
-SBIT(CCF4, _CCON, 4);
-SBIT(CCF3, _CCON, 3);
-SBIT(CCF2, _CCON, 2);
-SBIT(CCF1, _CCON, 1);
-SBIT(CCF0, _CCON, 0);
-*/
+SBIT(CEX3, _P2, 4);
+SBIT(CEX2, _P2, 0);
+SBIT(CEX1, _P3, 5);
+SBIT(CEX0, _P3, 7);
+SBIT(ECI, _P3, 4);
+
+/*  IE   */
+SBIT(EA, _IE, 7);
+SBIT(EPCA_LVD, _IE, 6);
+SBIT(EADC_SPI, _IE, 5);
+SBIT(ES, _IE, 4);
+SBIT(ET1, _IE, 3);
+SBIT(EX1, _IE, 2);
+SBIT(ET0, _IE, 1);
+SBIT(EX0, _IE, 0);
+
+/*  IP   */
+SBIT(PPCA_LVD, _IP, 6);
+SBIT(PADC_SPI, _IP, 5);
+SBIT(PS, _IP, 4);
+SBIT(PT1, _IP, 3);
+SBIT(PX1, _IP, 2);
+SBIT(PT0, _IP, 1);
+SBIT(PX0, _IP, 0);
 
 #endif

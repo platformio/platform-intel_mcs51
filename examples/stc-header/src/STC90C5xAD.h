@@ -1,24 +1,24 @@
-#ifndef STC89xx_H
-#define STC89xx_H
+#ifndef STC90C5xAD_H
+#define STC90C5xAD_H
 
 #include <compiler.h>
 
-// 适用于 STC89xx / STC90xx 系列的芯片
+// 适用于 STC90C5xAD 系列的芯片
 // Modified based on STC-ISP version by: ZnHoCn
 
-/* The following is STC additional SFR*/
+/* The following is STC additional SFR */
 
 /*
- * #define _AUXR 0x8e
- * SFR(AUXR, 0x8e);
- * #define _AUXR1 0xa2
- * SFR(AUXR1, 0xa2);
- * #define _IPH 0xb7
- * SFR(IPH, 0xb7);
- */
+#define _AUXR 0x8e
+SFR(AUXR, 0x8e);
+#define _AUXR1 0xa2
+SFR(AUXR1, 0xa2);
+#define _IPH 0xb7
+SFR(IPH, 0xb7);
+*/
 
-#define _P4 0xe8
-SFR(P4, 0xe8);
+#define _P4 0xc0
+SFR(P4, 0xc0);
 SBIT(P46, _P4, 6);
 SBIT(P45, _P4, 5);      //ISP下载需勾选"ALE脚用作P4.5口"
 SBIT(P44, _P4, 4);
@@ -27,8 +27,8 @@ SBIT(P42, _P4, 2);
 SBIT(P41, _P4, 1);
 SBIT(P40, _P4, 0);
 
-#define _XICON 0xc0
-SFR(XICON, 0xc0);
+#define _XICON 0xe8
+SFR(XICON, 0xe8);
 
 #define _WDT_CONTR 0xe1
 SFR(WDT_CONTR, 0xe1);
@@ -231,7 +231,7 @@ SBIT(ET0, _IE, 1);
 SBIT(EX0, _IE, 0);
 
 /*  IP   */
-/*  SBIT(PPC, _IP, 6);*/
+//SBIT(PPC, _IP, 6);
 SBIT(PT2, _IP, 5);
 SBIT(PS, _IP, 4);
 SBIT(PT1, _IP, 3);
@@ -250,7 +250,7 @@ SBIT(TXD, _P3, 1);
 SBIT(RXD, _P3, 0);
 
 /*  SCON  */
-SBIT(SM0, _SCON, 7);        // alternatively "FE"
+SBIT(SM0, _SCON, 7);    // alternatively "FE"
 SBIT(FE, _SCON, 7);
 SBIT(SM1, _SCON, 6);
 SBIT(SM2, _SCON, 5);
