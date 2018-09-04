@@ -3,7 +3,7 @@
 
 #include <compiler.h>
 
-// 适用于 STC12C5Axx / STC12C52xx 系列的芯片
+// 适用于 STC12C20xx 系列的芯片
 // Modified based on STC-ISP version by: ZnHoCn
 
 /* The following is STC additional SFR or change */
