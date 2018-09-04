@@ -4,7 +4,7 @@
 #include <compiler.h>
 
 // 包含本头文件后,不用另外再包含"REG51.H"
-// 适用于 STC89xx / STC90xx 系列的芯片
+// 适用于 STC8Fxx / STC8Axx 系列的芯片
 // Modified based on STC-ISP version by: ZnHoCn
 
 //内核特殊功能寄存器

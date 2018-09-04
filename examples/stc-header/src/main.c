@@ -1,5 +1,5 @@
 #include <reg51.h>       // old header from SDCC
-// #include "STC8Fxx.h"     // Official header from STC-ISP for STC89xx / STC90xx
+// #include "STC8Fxx.h"     // Official header from STC-ISP for STC8Fxx / STC8Axx
 // #include "STC12C5Axx.h"  // Official header from STC-ISP for STC10Fxx / STC11Fxx / STC12C5Axx / STC12C52xx
 // #include "STC12C20xx.h"  // Official header from STC-ISP for STC12C20xx
 // #include "STC12C54xx.h"  // Official header from STC-ISP for STC12C54xx
