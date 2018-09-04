@@ -1,5 +1,5 @@
-#ifndef __STC15Fxx_H_
-#define __STC15Fxx_H_
+#ifndef STC15Fxx_H
+#define STC15Fxx_H
 
 #include <compiler.h>
 
