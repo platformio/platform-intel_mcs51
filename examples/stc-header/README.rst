@@ -20,7 +20,7 @@ How to build PlatformIO based project
 .. code-block:: bash
 
     # Change directory to example
-    > cd platform-intel_mcs51/examples/native-blink
+    > cd platform-intel_mcs51/examples/stc-header
 
     # Build project
     > platformio run
@@ -29,10 +29,10 @@ How to build PlatformIO based project
     > platformio run --target upload
 
     # Build specific environment
-    > platformio run -e stc15f204ea
+    > platformio run -e stc15w408as
 
     # Upload firmware for the specific environment
-    > platformio run -e stc15f204ea --target upload
+    > platformio run -e stc15w408as --target upload
 
     # Clean build files
     > platformio run --target clean
