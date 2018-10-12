@@ -4,6 +4,8 @@ python:
 
 env:
   - PLATFORMIO_PROJECT_DIR=examples/native-blink
+  - PLATFORMIO_PROJECT_DIR=examples/stc-blink
+  - PLATFORMIO_PROJECT_DIR=examples/stc-header
 
 install:
   - pip install -U https://github.com/platformio/platformio/archive/develop.zip
