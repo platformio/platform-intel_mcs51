@@ -3,6 +3,8 @@ environment:
 
   matrix:
     - PLATFORMIO_PROJECT_DIR: "examples/native-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/stc-blink"
+    - PLATFORMIO_PROJECT_DIR: "examples/stc-header"
 
 install:
 - cmd: git submodule update --init --recursive
