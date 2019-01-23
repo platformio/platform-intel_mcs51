@@ -13,7 +13,6 @@
     "maximum_ram_size": 256,
     "maximum_size": 4096,
     "protocol": "stcgal",
-    "stcgal_protocol": "stc15",
     "protocols": [
       "stcgal"
     ]
