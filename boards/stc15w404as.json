@@ -5,7 +5,7 @@
     "size_xram": 256,
     "size_code": 4096,
     "size_heap": 128,
-    "mcu": "stc15w408as",
+    "mcu": "stc15w404as",
     "cpu": "mcs51"
   },
   "frameworks": [],
@@ -18,7 +18,7 @@
       "stcgal"
     ]
   },
-  "name": "Generic STC15W408AS",
-  "url": "https://www.stcmicro.com/STC/STC15W408AS.html",
+  "name": "Generic STC15W404AS",
+  "url": "https://www.stcmicro.com/STC/STC15W404AS.html",
   "vendor": "STC"
 }
