@@ -6,7 +6,7 @@
     "size_code": 61440,
     "size_heap": 128,
     "mcu": "stc15f2k60s2",
-    "cpu": "mcs51"
+    "cpu": "p89c51r"
   },
   "frameworks": [],
   "upload": {
