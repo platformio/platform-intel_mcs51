@@ -6,7 +6,7 @@
     "size_code": 4096,
     "size_heap": 128,
     "mcu": "stc15w404as",
-    "cpu": "p89c51r"
+    "cpu": "mcs51"
   },
   "frameworks": [],
   "upload": {
