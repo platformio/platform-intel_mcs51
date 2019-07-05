@@ -6,7 +6,7 @@
     "size_code": 8192,
     "size_heap": 128,
     "mcu": "stc15w408as",
-    "cpu": "mcs51"
+    "cpu": "p89c51r"
   },
   "frameworks": [],
   "upload": {
