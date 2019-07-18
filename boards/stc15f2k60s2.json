@@ -1,0 +1,24 @@
+{
+  "build": {
+    "f_cpu": "6000000",
+    "size_iram": 256,
+    "size_xram": 1536,
+    "size_code": 61440,
+    "size_heap": 128,
+    "mcu": "stc15f2k60s2",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 61440,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc15",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC15F2K60S2",
+  "url": "https://www.stcmicro.com/STC/STC15F2K32S2.html",
+  "vendor": "STC"
+}
