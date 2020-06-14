@@ -163,11 +163,13 @@ if upload_protocol == "stcgal":
 
 # CH55x upload tool
 elif upload_protocol == "ch55x":
-    UPLOADER="ch55xtool.py"
-    UPLOADERFLAGS=[
-        "-r","-f"
-    ];
-    UPLOADCMD="python3 $UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.bin"
+    env.Replace(
+        UPLOADER="ch55xtool.py",
+        UPLOADERFLAGS=[
+            "-f"
+        ],
+        UPLOADCMD="python3 $UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.bin")
+
     upload_actions = [
         env.VerboseAction(" ".join(["$OBJCOPY","-I","ihex","-O","binary",
             "$SOURCE", "$BUILD_DIR/${PROGNAME}.bin"]), "Creating binary"),
