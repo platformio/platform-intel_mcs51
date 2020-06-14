@@ -161,6 +161,19 @@ if upload_protocol == "stcgal":
         env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
     ]
 
+# CH55x upload tool
+elif upload_protocol == "ch55x":
+    UPLOADER="ch55xtool.py"
+    UPLOADERFLAGS=[
+        "-r","-f"
+    ];
+    UPLOADCMD="python3 $UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.bin"
+    upload_actions = [
+        env.VerboseAction(" ".join(["$OBJCOPY","-I","ihex","-O","binary",
+            "$SOURCE", "$BUILD_DIR/${PROGNAME}.bin"]), "Creating binary"),
+        env.VerboseAction("$UPLOADCMD", "Uploading ${PROGNAME}.bin")
+    ]
+
 # custom upload tool
 elif upload_protocol == "custom":
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
