@@ -1,6 +1,6 @@
 {
   "build": {
-    "f_cpu": "56000000L",
+    "f_cpu": "12000000L",
     "size_iram": 256,
     "size_xram": 6144,
     "size_code": 65536,
