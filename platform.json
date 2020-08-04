@@ -4,6 +4,13 @@
   "description": "The Intel MCS-51 (commonly termed 8051) is an internally Harvard architecture, complex instruction set computer (CISC) instruction set, single chip microcontroller (uC) series developed by Intel in 1980 for use in embedded systems.",
   "homepage": "https://en.wikipedia.org/wiki/Intel_MCS-51",
   "license": "Apache-2.0",
+  "keywords": [
+      "dev-platform",
+      "Intel",
+      "MCS-51",
+      "8051",
+      "CISC"
+  ],
   "engines": {
     "platformio": "<5"
   },
