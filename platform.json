@@ -26,10 +26,12 @@
   "packages": {
     "toolchain-sdcc": {
       "type": "toolchain",
+      "owner": "platformio",
       "version": "~1.30804.10766"
     },
     "tool-stcgal": {
       "type": "uploader",
+      "owner": "platformio",
       "version": "~1.104.0"
     }
   }
