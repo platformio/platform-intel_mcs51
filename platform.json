@@ -12,17 +12,13 @@
       "CISC"
   ],
   "engines": {
-    "platformio": "<5"
+    "platformio": "^5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/platformio/platform-intel_mcs51.git"
   },
   "version": "1.2.2",
-  "packageRepositories": [
-    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "http://dl.platformio.org/packages/manifest.json"
-  ],
   "packages": {
     "toolchain-sdcc": {
       "type": "toolchain",
