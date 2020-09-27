@@ -1,0 +1,24 @@
+{
+  "build": {
+    "f_cpu": "11059200",
+    "size_iram": 256,
+    "size_xram": 3072,
+    "size_code": 65536,
+    "size_heap": 1536,
+    "mcu": "stc8h3k64",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 3328,
+    "maximum_size": 65536,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc8",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC8H3K64",
+  "url": "https://www.stcmicro.com/STC/STC15W408AS.html",
+  "vendor": "STC"
+}
