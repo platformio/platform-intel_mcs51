@@ -80,6 +80,7 @@ env.Append(
     ],
 
     CCFLAGS=[
+        "--debug",
         "--opt-code-size",  # optimize for size
         "--peep-return",    # peephole optimization for return instructions
         "-m%s" % board_config.get("build.cpu")
@@ -91,6 +92,7 @@ env.Append(
     ],
 
     LINKFLAGS=[
+        "--debug",
         "-m%s" % board_config.get("build.cpu"),
         "--iram-size", __getSize("size_iram", env),
         "--xram-size", __getSize("size_xram", env),
