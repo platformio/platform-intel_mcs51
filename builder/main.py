@@ -153,7 +153,7 @@ if upload_protocol == "stcgal":
             "-t", int(f_cpu_khz),
             "-a"
         ],
-        UPLOADCMD="python3 %s $UPLOADERFLAGS $SOURCE" % stcgal )
+        UPLOADCMD='"$PYTHONEXE" %s $UPLOADERFLAGS $SOURCE' % stcgal)
 
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort,
