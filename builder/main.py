@@ -73,7 +73,7 @@ env.Replace(
 )
 
 env.Append(
-    ASFLAGS=env.get("CCFLAGS", [])[:],
+    ASFLAGS=["-l", "-s"],
 
     CFLAGS=[
         "--std-sdcc11"
