@@ -943,6 +943,9 @@ SFR(PIPEN, _PIPEN); /// 0000'0000             Pin interrupt high level/rising ed
 //Reset vector absolute address declaration
 #define RST_VECTOR 0x00 //- 0x00 Reset Vector
 //Interrupt numbers: Address = ( Number * 8 ) + 3
+//Vectors are named after their corresponding interrupt
+//enable register bit, so that we don't have to make up
+//names and can be consisten across different 8051 MCUs
 #define EX0_VECTOR  0  //- 0x03 External Interrupt 0
 #define ET0_VECTOR  1  //- 0x0B Timer 0
 #define EX1_VECTOR  2  //- 0x13 External Interrupt 1
