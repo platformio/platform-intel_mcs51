@@ -1,18 +1,19 @@
 {
   "build": {
     "core": "naked",
-    "extra_flags": "-DSTC15W204S -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W204S",
+    "extra_flags": "-DSTC15X10X -DSTC15F104W -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15X10X",
     "f_cpu": "11059200",
-    "size_iram": 256,
+    "size_iram": 128,
     "size_xram": 0,
     "size_code": 4096,
     "size_heap": 64,
-    "mcu": "stc15w204s",
-    "cpu": "mcs51"
+    "mcu": "stc15f104w",
+    "cpu": "mcs51",
+	"variant": "stc15x10x"
   },
   "frameworks": [],
   "upload": {
-    "maximum_ram_size": 256,
+    "maximum_ram_size": 128,
     "maximum_size": 4096,
     "protocol": "stcgal",
     "stcgal_protocol": "stc15",
@@ -20,7 +21,7 @@
       "stcgal"
     ]
   },
-  "name": "Generic STC15W204S",
-  "url": "https://www.stcmicro.com/STC/STC15W204S.html",
+  "name": "Generic STC15F104W",
+  "url": "https://www.stcmicro.com/STC/STC15F104W.html",
   "vendor": "STC"
 }

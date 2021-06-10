@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DAT89S51 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_AT89S51",
+    "f_cpu": "11059200L",
+    "size_iram": 128,
+    "size_xram": 0,
+    "size_code": 4096,
+    "size_heap": 64,
+    "mcu": "at89s51",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 128,
+    "maximum_size": 4096,
+    "protocol": "avrdude",
+    "avrdude_protocol": "AT89S51",
+    "protocols": [
+      "usbasp",
+	  "avrisp"
+    ]
+  },
+  "name": "Generic AT89S51",
+  "url": "https://www.microchip.com/wwwproducts/en/AT89S51",
+  "vendor": "Microchip & Atmel"
+}

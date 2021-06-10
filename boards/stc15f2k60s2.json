@@ -1,5 +1,7 @@
 {
   "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC15FK60S2 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15FK60S2",
     "f_cpu": "6000000",
     "size_iram": 256,
     "size_xram": 1536,

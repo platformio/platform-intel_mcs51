@@ -14,7 +14,12 @@
   "frameworks": [],
   "upload": {
     "maximum_ram_size": 512,
-    "maximum_size": 16384
+    "maximum_size": 16384,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "n79e855",
+    "protocols": [
+      "nuvoprog"
+    ]
   },
   "name": "Generic N79E855",
   "url": "http://www.nuvoton.com/hq/products/microcontrollers/8bit-8051-mcus/low-pin-count-8051-series/n79e855/",
