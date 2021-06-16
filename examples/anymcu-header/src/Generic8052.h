@@ -1,7 +1,8 @@
-#ifndef 8052_H
-#define 8052_H
+#ifndef Generic8052_H
+#define Generic8052_H
 #include <compiler.h>
 
+// Includes extra compatibility enhancements over original 8052.h
 // Suitable for use with the original basic 8052 series MCU.
 // This header file was verified against the MCS-51 manual.
 // After this file is included you don't have to include "reg51.h".

@@ -1,27 +1,27 @@
 {
   "build": {
     "core": "naked",
-    "extra_flags": "-DSTC15F2KXXS2 -DSTC15F2K60S2 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15F2KXXS2",
+    "extra_flags": "-DSTC15F2KXXS2 -DSTC15F2K32S2 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15F2KXXS2",
     "f_cpu": "6000000L",
     "size_iram": 256,
     "size_xram": 1536,
-    "size_code": 61440,
+    "size_code": 32768,
     "size_heap": 128,
-    "mcu": "stc15f2k60s2",
+    "mcu": "stc15f2k32s2",
     "cpu": "mcs51",
     "variant": "stc15f2kxxs2"
   },
   "frameworks": [],
   "upload": {
     "maximum_ram_size": 2048,
-    "maximum_size": 61440,
+    "maximum_size": 32768,
     "protocol": "stcgal",
     "stcgal_protocol": "stc15",
     "protocols": [
       "stcgal"
     ]
   },
-  "name": "Generic STC15F2K60S2",
+  "name": "Generic STC15F2K32S2",
   "url": "https://www.stcmicro.com/STC/STC15F2K32S2.html",
   "vendor": "STC"
 }

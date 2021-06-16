@@ -1,16 +1,33 @@
-#include <8052.h>         // Official header from SDCC with fixes
-// #include <8051.h>        // Official header from SDCC with compatibility fixes
-// #include <8052.h>        // Official header from SDCC with compatibility fixes
-// #include "N76E003.h"     // Official header from Nuvoton for N76E003 with fixes
-// #include "STC8Fxx.h"     // Official header from STC-ISP for STC8Fxx/STC8Axx
-// #include "STC12C5Axx.h"  // Official header from STC-ISP for STC10Fxx/STC11Fxx/STC12C5Axx/STC12C52xx
-// #include "STC12C20xx.h"  // Official header from STC-ISP for STC12C20xx
-// #include "STC12C54xx.h"  // Official header from STC-ISP for STC12C54xx
-// #include "STC12C56xx.h"  // Official header from STC-ISP for STC12C56xx
-// #include "STC15.h"       // Official header from STC-ISP for STC15x except W4Kx
-// #include "STC15W4K.h"    // Official header from STC-ISP for STC15W4Kx only
-// #include "STC89xx.h"     // Official header from STC-ISP for STC89xx/STC90xx
-// #include "STC90C5xAD.h"  // Official header from STC-ISP for STC90C5xAD
+// Automatic header selection example for all mcs51 boards
+// Your boardname.json should pass the MCU names shown below
+// Include files by board name listed in alphabetical order:
+#if defined(N76E003)
+   #include "n76e003.h"
+#elif defined(STC15F10XW)
+   #include "STC15.h"
+#elif defined(STC15F20XA)
+   #include "STC15.h"
+#elif defined(STC15F2KXXS2)
+   #include "STC15.h"
+#elif defined(STC15W10X)
+   #include "STC15.h"
+#elif defined(STC15W20XS)
+   #include "STC15.h"
+#elif defined(STC15W40XAS)
+   #include "STC15.h"
+#elif defined(STC12C5AXXS2)
+   #include <stc12.h>
+#elif defined(STC89C5XRX)
+   #include <stc89.h>
+#elif defined(AT89S51)
+   #include <at89x51.h>
+#elif defined(AT89S52)
+   #include <at89x52.h>
+#elif defined(Generic8052)
+   #include "Generic8052.h"
+#else // Assume Generic8051
+   #include "Generic8051.h"
+#endif
 
 void main()
 {

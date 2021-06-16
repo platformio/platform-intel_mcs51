@@ -143,7 +143,7 @@ upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 upload_actions = []
 
 if upload_protocol == "stcgal":
-    f_cpu_khz = int(board_config.get("build.f_cpu")) / 1000
+    f_cpu_khz = int(board_config.get("build.f_cpu").strip('L')) / 1000
     stcgal_protocol = board_config.get("upload.stcgal_protocol")
     stcgal = join(env.PioPlatform().get_package_dir("tool-stcgal") or "", "stcgal.py")
     env.Replace(

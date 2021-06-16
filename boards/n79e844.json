@@ -6,6 +6,7 @@
     "size_iram": 256,
     "size_xram": 256,
     "size_code": 8192,
+    "size_heap": 128,
     "mcu": "n79e844",
     "cpu": "mcs51",
     "variant": "n79e84x"

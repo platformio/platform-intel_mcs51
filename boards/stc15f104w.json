@@ -1,15 +1,15 @@
 {
   "build": {
     "core": "naked",
-    "extra_flags": "-DSTC15X10X -DSTC15F104W -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15X10X",
-    "f_cpu": "11059200",
+    "extra_flags": "-DSTC15F10XW -DSTC15F104W -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15F10XW",
+    "f_cpu": "11059200L",
     "size_iram": 128,
     "size_xram": 0,
     "size_code": 4096,
     "size_heap": 64,
     "mcu": "stc15f104w",
     "cpu": "mcs51",
-	"variant": "stc15x10x"
+    "variant": "stc15f10xw"
   },
   "frameworks": [],
   "upload": {
