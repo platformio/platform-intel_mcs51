@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC8H4KXXTLR -DSTC8H4K32TLR -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC8H4KXXTLR",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 4096,
+    "size_code": 32768,
+    "size_heap": 128,
+    "mcu": "stc8h4k32tlr",
+    "cpu": "mcs51",
+    "variant": "stc8h4kxxtlr"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 4352,
+    "maximum_size": 32768,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc8",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC8H4K32TLR",
+  "url": "http://www.stcmicro.com/stc/stc51.html",
+  "vendor": "STC"
+}

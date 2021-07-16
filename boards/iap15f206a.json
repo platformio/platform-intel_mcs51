@@ -1,13 +1,13 @@
 {
   "build": {
     "core": "naked",
-    "extra_flags": "-DSTC15F20XA -DSTC15F206A -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15F20XA",
+    "extra_flags": "-DSTC15F20XA -DIAP15F206A -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15F20XA",
     "f_cpu": "11059200L",
     "size_iram": 256,
     "size_xram": 0,
     "size_code": 6144,
     "size_heap": 64,
-    "mcu": "stc15f206a",
+    "mcu": "iap15f206a",
     "cpu": "mcs51",
     "variant": "stc15f20xa"
   },
@@ -21,7 +21,7 @@
       "stcgal"
     ]
   },
-  "name": "Generic STC15F206A",
+  "name": "Generic IAP15F206A",
   "url": "https://www.stcmicro.com/STC/STC15F204EA.html",
   "vendor": "STC"
 }

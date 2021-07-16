@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC8G1KXX -DSTC8G1K08 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC8G1KXX",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 1024,
+    "size_code": 8192,
+    "size_heap": 128,
+    "mcu": "stc8g1k08",
+    "cpu": "mcs51",
+    "variant": "stc8g1kxx"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 1280,
+    "maximum_size": 8192,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc8",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC8G1K08",
+  "url": "http://www.stcmicro.com/stc/stc8g1k08.html",
+  "vendor": "STC"
+}

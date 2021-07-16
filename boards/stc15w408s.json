@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC15W4XXS -DSTC15W408S -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W4XXS",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 256,
+    "size_code": 8192,
+    "size_heap": 128,
+    "mcu": "stc15w408s",
+    "cpu": "mcs51",
+    "variant": "stc15w4xxs"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 8192,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc15",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC15W408S",
+  "url": "http://www.stcmicro.com/STC/STC15W408S.html",
+  "vendor": "STC"
+}

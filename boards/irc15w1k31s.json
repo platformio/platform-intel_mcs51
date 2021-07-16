@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC15W1KXXS -DIRC15W1K31S -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W1KXXS",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 768,
+    "size_code": 32256,
+    "size_heap": 128,
+    "mcu": "irc15w1k31s",
+    "cpu": "mcs51",
+    "variant": "stc15w1kxxs"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 32256,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc15",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic IRC15W1K31S",
+  "url": "http://www.stcmicro.com/STC/STC15W1K24S.html",
+  "vendor": "STC"
+}
