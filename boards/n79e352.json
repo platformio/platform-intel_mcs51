@@ -1,0 +1,26 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DN79E352 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_N79E352",
+    "f_cpu": "22118400L",
+    "size_iram": 256,
+    "size_xram": 0,
+    "size_code": 8192,
+    "size_heap": 64,
+    "mcu": "n79e352",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 256,
+    "maximum_size": 8192,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "n79e352",
+    "protocols": [
+      "nuvoprog"
+    ]
+  },
+  "name": "Generic N79E352",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/standard-8051-series/n79e352r/",
+  "vendor": "Nuvoton"
+}

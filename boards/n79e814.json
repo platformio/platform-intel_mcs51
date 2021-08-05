@@ -1,27 +1,27 @@
 {
   "build": {
     "core": "naked",
-    "extra_flags": "-DN79E84X -DN79E844 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_N79E84X",
+    "extra_flags": "-DN79E81X -DN79E814 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_N79E81X",
     "f_cpu": "22118400L",
     "size_iram": 256,
     "size_xram": 256,
     "size_code": 8192,
     "size_heap": 128,
-    "mcu": "n79e844",
+    "mcu": "n79e814",
     "cpu": "mcs51",
-    "variant": "n79e84x"
+    "variant": "n79e81x"
   },
   "frameworks": [],
   "upload": {
     "maximum_ram_size": 512,
     "maximum_size": 8192,
     "protocol": "nuvoprog",
-    "nuvoprog_protocol": "n79e844",
+    "nuvoprog_protocol": "n79e814",
     "protocols": [
       "nuvoprog"
     ]
   },
-  "name": "Generic N79E844",
-  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/low-pin-count-8051-series/n79e844/",
+  "name": "Generic N79E814",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/low-pin-count-8051-series/n79e814/",
   "vendor": "Nuvoton"
 }
