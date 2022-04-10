@@ -1,6 +1,5 @@
 # Intel MCS-51 (8051): development platform for [PlatformIO](http://platformio.org)
-[![Build Status](https://travis-ci.org/platformio/platform-intel_mcs51.svg?branch=develop)](https://travis-ci.org/platformio/platform-intel_mcs51)
-[![Build status](https://ci.appveyor.com/api/projects/status/0207sb475heyoaxa/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-intel-mcs51/branch/develop)
+[![Build Status](https://github.com/platformio/platform-intel_mcs51/workflows/Examples/badge.svg)](https://github.com/platformio/platform-intel_mcs51/actions)
 
 The Intel MCS-51 (commonly termed 8051) is an internally Harvard architecture, complex instruction set computer (CISC) instruction set, single chip microcontroller (µC) series developed by Intel in 1980 for use in embedded systems.
 
