@@ -12,7 +12,6 @@ jobs:
         example:
           - "examples/assembly-blink"
           - "examples/native-blink"
-          - "examples/native-blink"
           - "examples/stc-blink"
           - "examples/stc-header"
     runs-on: ${{ matrix.os }}
