@@ -27,8 +27,15 @@
     },
     "tool-stcgal": {
       "type": "uploader",
+      "optional": true,
       "owner": "platformio",
       "version": "~1.104.0"
+    },
+    "tool-vnproch55x": {
+      "type": "uploader",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.0.220407"
     }
   }
 }

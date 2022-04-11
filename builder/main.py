@@ -51,6 +51,7 @@ def _parseSdccFlags(flags):
 
 
 env = DefaultEnvironment()
+platform = env.PioPlatform()
 board_config = env.BoardConfig()
 
 env.Replace(
@@ -62,7 +63,7 @@ env.Replace(
     OBJCOPY="sdobjcopy",
     OBJSUFFIX=".rel",
     LIBSUFFIX=".lib",
-    SIZETOOL=join(env.PioPlatform().get_dir(), "builder", "size.py"),
+    SIZETOOL=join(platform.get_dir(), "builder", "size.py"),
 
     SIZECHECKCMD='$PYTHONEXE $SIZETOOL $SOURCES',
     SIZEPRINTCMD='"$PYTHONEXE" $SIZETOOL $SOURCES',
@@ -147,15 +148,15 @@ upload_actions = []
 if upload_protocol == "stcgal":
     f_cpu_khz = int(board_config.get("build.f_cpu").strip('L')) / 1000
     stcgal_protocol = board_config.get("upload.stcgal_protocol")
-    stcgal = join(env.PioPlatform().get_package_dir("tool-stcgal") or "", "stcgal.py")
     env.Replace(
+        UPLOADER=join(platform.get_package_dir("tool-stcgal") or "", "stcgal.py"),
         UPLOADERFLAGS=[
             "-P", stcgal_protocol,
             "-p", "$UPLOAD_PORT",
             "-t", int(f_cpu_khz),
             "-a"
         ],
-        UPLOADCMD='"$PYTHONEXE" %s $UPLOADERFLAGS $SOURCE' % stcgal)
+        UPLOADCMD='"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE')
 
     upload_actions = [
         env.VerboseAction(env.AutodetectUploadPort,
@@ -166,11 +167,11 @@ if upload_protocol == "stcgal":
 # CH55x upload tool
 elif upload_protocol == "ch55x":
     env.Replace(
-        UPLOADER="ch55xtool.py",
+        UPLOADER="vnproch55x",
         UPLOADERFLAGS=[
             "-f"
         ],
-        UPLOADCMD="$PYTHONEXE $UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.bin")
+        UPLOADCMD="$UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.bin")
 
     upload_actions = [
         env.VerboseAction(" ".join(["$OBJCOPY","-I","ihex","-O","binary",
