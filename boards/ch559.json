@@ -1,0 +1,20 @@
+{
+  "build": {
+    "f_cpu": "12000000L",
+    "size_iram": 256,
+    "size_xram": 6144,
+    "size_code": 65536,
+    "size_heap": 128,
+    "mcu": "ch559",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 6400,
+    "maximum_size": 65536,
+    "protocol": "ch55x"
+  },
+  "name": "CH559",
+  "url": "http://www.wch-ic.com/products/CH559.html",
+  "vendor": "WCH"
+}
