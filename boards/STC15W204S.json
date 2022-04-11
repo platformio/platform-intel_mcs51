@@ -1,12 +1,15 @@
 {
   "build": {
-    "f_cpu": "11059200",
+    "core": "naked",
+    "extra_flags": "-DSTC15W20XS -DSTC15W204S -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W20XS",
+    "f_cpu": "11059200L",
     "size_iram": 256,
     "size_xram": 0,
     "size_code": 4096,
     "size_heap": 64,
     "mcu": "stc15w204s",
-    "cpu": "mcs51"
+    "cpu": "mcs51",
+    "variant": "stc15w20xs"
   },
   "frameworks": [],
   "upload": {

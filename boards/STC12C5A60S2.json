@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC12C5AXXS2 -DSTC12C5A60S2 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC12C5AXXS2",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 1024,
+    "size_code": 61140,
+	"size_heap": 128,
+    "mcu": "stc12c5a60s2",
+    "cpu": "mcs51",
+    "variant": "stc12c5axxS2"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 1280,
+    "maximum_size": 61140,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc12",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC12C5A60S2",
+  "url": "http://www.stcmicro.com/stc/stc12c5a32s2.html",
+  "vendor": "STC"
+}

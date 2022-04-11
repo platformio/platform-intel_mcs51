@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC8G2KXXS4 -DSTC8G2K64S4 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC8G2KXXS4",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 2048,
+    "size_code": 65536,
+    "size_heap": 128,
+    "mcu": "stc8g2k64s4",
+    "cpu": "mcs51",
+    "variant": "stc8g2kxxs4"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 2304,
+    "maximum_size": 65536,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc8",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC8G2K64S4",
+  "url": "http://www.stcmicro.com/stc/stc51.html",
+  "vendor": "STC"
+}

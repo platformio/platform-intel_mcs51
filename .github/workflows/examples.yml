@@ -10,6 +10,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: [3.7]
         example:
+          - "examples/anymcu-blink"
+          - "examples/anymcu-header"
           - "examples/assembly-blink"
           - "examples/native-blink"
           - "examples/stc-blink"

@@ -1,12 +1,15 @@
 {
   "build": {
-    "f_cpu": "11059200",
+    "core": "naked",
+    "extra_flags": "-DSTC15W40XAS -DSTC15W404AS -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W40XAS",
+    "f_cpu": "11059200L",
     "size_iram": 256,
     "size_xram": 256,
     "size_code": 4096,
     "size_heap": 128,
     "mcu": "stc15w404as",
-    "cpu": "mcs51"
+    "cpu": "mcs51",
+    "variant": "stc15w40xas"
   },
   "frameworks": [],
   "upload": {
@@ -19,6 +22,6 @@
     ]
   },
   "name": "Generic STC15W404AS",
-  "url": "https://www.stcmicro.com/STC/STC15W404AS.html",
+  "url": "https://www.stcmicro.com/STC/STC15W408AS.html",
   "vendor": "STC"
 }

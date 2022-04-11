@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC15W20XS -DIAP15W205S -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W20XS",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 0,
+    "size_code": 5120,
+    "size_heap": 64,
+    "mcu": "iap15w205s",
+    "cpu": "mcs51",
+    "variant": "stc15w20xs"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 256,
+    "maximum_size": 5120,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc15",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic IAP15W205S",
+  "url": "https://www.stcmicro.com/STC/STC15W204S.html",
+  "vendor": "STC"
+}

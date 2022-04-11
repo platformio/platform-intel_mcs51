@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC15F4XXAD -DSTC15F408AD -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15F4XXAD",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 256,
+    "size_code": 8192,
+    "size_heap": 128,
+    "mcu": "stc15f408ad",
+    "cpu": "mcs51",
+    "variant": "stc15f4xxad"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 8192,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc15",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC15F408AD",
+  "url": "http://www.stcmicro.com/STC/STC15F408AD.html",
+  "vendor": "STC"
+}

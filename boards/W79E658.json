@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DW79E65X -DW79E658 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_W79E65X",
+    "f_cpu": "22118400L",
+    "size_iram": 256,
+    "size_xram": 1024,
+    "size_code": 65536,
+    "size_heap": 128,
+    "mcu": "w79e658",
+    "cpu": "mcs51",
+    "variant": "w79e65x"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 1280,
+    "maximum_size": 65536,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "w79e658",
+    "protocols": [
+      "nuvoprog"
+    ]
+  },
+  "name": "Generic W79E658",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/standard-8051-series/w79e658a/",
+  "vendor": "Nuvoton"
+}

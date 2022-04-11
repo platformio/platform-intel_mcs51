@@ -1,0 +1,26 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DN76E003 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_N76E003",
+    "f_cpu": "16000000L",
+    "size_iram": 256,
+    "size_xram": 768,
+    "size_code": 18432,
+    "size_heap": 128,
+    "mcu": "n76e003",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 1024,
+    "maximum_size": 18432,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "n76e003",
+    "protocols": [
+      "nuvoprog"
+    ]
+  },
+  "name": "Generic N76E003",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/low-pin-count-8051-series/n76e003/",
+  "vendor": "Nuvoton"
+}
