@@ -23,12 +23,19 @@
     "toolchain-sdcc": {
       "type": "toolchain",
       "owner": "platformio",
-      "version": "~1.30804.10766"
+      "version": ">=1.40100.0,<1.40201.0"
     },
     "tool-stcgal": {
       "type": "uploader",
+      "optional": true,
       "owner": "platformio",
       "version": "~1.104.0"
+    },
+    "tool-vnproch55x": {
+      "type": "uploader",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~1.0.220407"
     }
   }
 }
