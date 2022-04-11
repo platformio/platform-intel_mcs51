@@ -2,7 +2,7 @@
 // Your boardname.json should pass the MCU names shown below
 // Include files by board name listed in alphabetical order:
 #if defined(N76E003)
-   #include "n76e003.h"
+   #include "N76E003.h"
    #define ledPin P14
    #define INIT_PIN P1M1 &= 0xFE; P1M2 &= 0xFE;
    //print this out as an info during compilation
@@ -44,25 +44,25 @@
    //print this out as an info during compilation
    #warning Connect LED to MCU port 1 pin 0
 #elif defined(STC12C5AXXS2)
-   #include <stc12.h>
+   #include <STC12.H>
    #define ledPin P10
    #define INIT_PIN //Pin init not needed
    //print this out as an info during compilation
    #warning Connect LED to MCU port 1 pin 0
 #elif defined(STC89C5XRX)
-   #include <stc89.h>
+   #include <STC89.H>
    #define ledPin P10
    #define INIT_PIN //Pin init not needed
    //print this out as an info during compilation
    #warning Connect LED to MCU port 1 pin 0
 #elif defined(AT89S51)
-   #include <at89x51.h>
+   #include <AT89X51.H>
    #define ledPin P10
    #define INIT_PIN //Pin init not needed
    //print this out as an info during compilation
    #warning Connect LED to MCU port 1 pin 0
 #elif defined(AT89S52)
-   #include <at89x52.h>
+   #include <AT89X52.H>
    #define ledPin P10
    #define INIT_PIN //Pin init not needed
    //print this out as an info during compilation
