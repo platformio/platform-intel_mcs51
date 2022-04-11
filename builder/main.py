@@ -168,7 +168,7 @@ elif upload_protocol == "ch55x":
         UPLOADERFLAGS=[
             "-f"
         ],
-        UPLOADCMD="python3 $UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.bin")
+        UPLOADCMD="$PYTHONEXE $UPLOADER $UPLOADERFLAGS $BUILD_DIR/${PROGNAME}.bin")
 
     upload_actions = [
         env.VerboseAction(" ".join(["$OBJCOPY","-I","ihex","-O","binary",
