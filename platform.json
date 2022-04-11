@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-intel_mcs51.git"
   },
-  "version": "1.2.3",
+  "version": "2.0.0-beta.1",
   "packages": {
     "toolchain-sdcc": {
       "type": "toolchain",
@@ -29,7 +29,7 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.104.0"
+      "version": "~1.106.0"
     },
     "tool-vnproch55x": {
       "type": "uploader",
