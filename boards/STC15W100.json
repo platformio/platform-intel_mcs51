@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC15W10X -DSTC15W100 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W10X",
+    "f_cpu": "11059200L",
+    "size_iram": 128,
+    "size_xram": 0,
+    "size_code": 512,
+    "size_heap": 64,
+    "mcu": "stc15w100",
+    "cpu": "mcs51",
+    "variant": "stc15w10x"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 128,
+    "maximum_size": 512,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc15",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC15W100",
+  "url": "https://www.stcmicro.com/STC/STC15W104.html",
+  "vendor": "STC"
+}

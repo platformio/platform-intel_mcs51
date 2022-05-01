@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DMS51XA -DMS51IA9AE -DNAKED_ARCH_MCS51 -DNAKED_MCS51_MS51XA",
+    "f_cpu": "16000000L",
+    "size_iram": 256,
+    "size_xram": 1024,
+    "size_code": 8192,
+    "size_heap": 128,
+    "mcu": "ms51ia9ae",
+    "cpu": "mcs51",
+    "variant": "ms51xa"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 1280,
+    "maximum_size": 8192,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "ms51ia9ae",
+    "protocols": [
+      "nuvoprog"
+    ]
+  },
+  "name": "Generic MS51IA9AE",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/industrial-8051-series/",
+  "vendor": "Nuvoton"
+}

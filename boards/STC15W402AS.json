@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC15W40XAS -DSTC15W402AS -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC15W40XAS",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 256,
+    "size_code": 2048,
+    "size_heap": 128,
+    "mcu": "stc15w402as",
+    "cpu": "mcs51",
+    "variant": "stc15w40xas"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 2048,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc15",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC15W402AS",
+  "url": "https://www.stcmicro.com/STC/STC15W408AS.html",
+  "vendor": "STC"
+}

@@ -1,0 +1,26 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DW79E8213 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_W79E8213",
+    "f_cpu": "20000000L",
+    "size_iram": 128,
+    "size_xram": 0,
+    "size_code": 4096,
+    "size_heap": 64,
+    "mcu": "w79e8213",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 128,
+    "maximum_size": 4096,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "w79e8213",
+    "protocols": [
+      "nuvoprog"
+    ]
+  },
+  "name": "Generic W79E8213",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/low-pin-count-8051-series/w79e8213/",
+  "vendor": "Nuvoton"
+}

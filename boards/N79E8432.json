@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DN79E84X -DN79E8432 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_N79E84X",
+    "f_cpu": "22118400L",
+    "size_iram": 256,
+    "size_xram": 256,
+    "size_code": 4096,
+    "size_heap": 128,
+    "mcu": "n79e8432",
+    "cpu": "mcs51",
+    "variant": "n79e84x"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 512,
+    "maximum_size": 4096,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "n79e8432",
+    "protocols": [
+      "nuvoprog"
+    ]
+  },
+  "name": "Generic N79E8432",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/low-pin-count-8051-series/n79e8432/",
+  "vendor": "Nuvoton"
+}

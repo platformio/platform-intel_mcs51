@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DML51X -DML51PB9AE -DNAKED_ARCH_MCS51 -DNAKED_MCS51_ML51X",
+    "f_cpu": "24000000L",
+    "size_iram": 256,
+    "size_xram": 2048,
+    "size_code": 16384,
+    "size_heap": 128,
+    "mcu": "ml51pb9ae",
+    "cpu": "mcs51",
+    "variant": "ml51x"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 2304,
+    "maximum_size": 16384,
+    "protocol": "nuvoprog",
+    "nuvoprog_protocol": "ml51pb9ae",
+    "protocols": [
+      "nuvoprog"
+    ]
+  },
+  "name": "Generic ML51PB9AE",
+  "url": "https://www.nuvoton.com/products/microcontrollers/8bit-8051-mcus/low-power-ml51-series/",
+  "vendor": "Nuvoton"
+}

@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC8H3KXXS4 -DSTC8H3K60S4 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC8H3KXXS4",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 3072,
+    "size_code": 61440,
+    "size_heap": 128,
+    "mcu": "stc8h3k60s4",
+    "cpu": "mcs51",
+    "variant": "stc8h3kxxs4"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 3328,
+    "maximum_size": 61440,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc8",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC8H3K60S4",
+  "url": "http://www.stcmicro.com/stc/stc51.html",
+  "vendor": "STC"
+}

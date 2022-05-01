@@ -1,0 +1,21 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DGeneric8052 -DNAKED_ARCH_MCS51 -DNAKED_MCS51_Generic8052",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 0,
+    "size_code": 8192,
+    "size_heap": 64,
+    "mcu": "8052",
+    "cpu": "mcs51"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 256,
+    "maximum_size": 8192
+  },
+  "name": "Generic 8052",
+  "url": "https://en.wikipedia.org/wiki/Intel_8051",
+  "vendor": "Intel & licensees"
+}

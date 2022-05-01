@@ -1,0 +1,27 @@
+{
+  "build": {
+    "core": "naked",
+    "extra_flags": "-DSTC89C5XRX -DSTC89C54RD+ -DNAKED_ARCH_MCS51 -DNAKED_MCS51_STC89C5XRX",
+    "f_cpu": "11059200L",
+    "size_iram": 256,
+    "size_xram": 1024,
+    "size_code": 16384,
+	"size_heap": 128,
+    "mcu": "stc89c54rd+",
+    "cpu": "mcs51",
+    "variant": "stc89c5xrx"
+  },
+  "frameworks": [],
+  "upload": {
+    "maximum_ram_size": 1280,
+    "maximum_size": 16384,
+    "protocol": "stcgal",
+    "stcgal_protocol": "stc89",
+    "protocols": [
+      "stcgal"
+    ]
+  },
+  "name": "Generic STC89C54RD+",
+  "url": "https://www.stcmicro.com/STC/STC89C52RC.html",
+  "vendor": "STC"
+}
