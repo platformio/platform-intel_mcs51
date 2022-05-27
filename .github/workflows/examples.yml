@@ -8,7 +8,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.7]
         example:
           - "examples/anymcu-blink"
           - "examples/anymcu-header"
@@ -18,18 +17,17 @@ jobs:
           - "examples/stc-header"
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.9"
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
           pio pkg install --global --platform symlink://.
       - name: Build examples
         run: |
-          platformio run -d ${{ matrix.example }}
+          pio run -d ${{ matrix.example }}
