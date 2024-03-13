@@ -29,7 +29,7 @@
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~1.106.0"
+      "version": "~1.110.0"
     },
     "tool-vnproch55x": {
       "type": "uploader",
