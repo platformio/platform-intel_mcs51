@@ -34,7 +34,7 @@ __data __at 0x0F volatile BYTE RBIT;
 volatile BOOL TING,RING;
 volatile BOOL TEND,REND;
 
-void UART_INIT();
+void UART_INIT(void);
 
 void putchar(unsigned char c)
 {
@@ -90,7 +90,7 @@ void main()
 //__data __at 0x0D BYTE RCNT;
 //__data __at 0x0E BYTE TBIT;
 //__data __at 0x0F BYTE RBIT;	=> ar7
-void _tm1() __interrupt 3 __using 1
+void _tm1(void) __interrupt (3) __using (1)
 {
 	__asm
 		jb	_RING,00002$	
@@ -140,7 +140,7 @@ void _tm1() __interrupt 3 __using 1
 
 //-----------------------------------------
 //initial UART module variable
-void UART_INIT()
+void UART_INIT(void)
 {
 	TING = 0;
 	RING = 0;
