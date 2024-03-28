@@ -42,7 +42,7 @@ void _delay_ms(unsigned char ms)
 
 const char* startstring = "\nSTC15F204EA starting up...\n";
 
-int main()
+void main(void)
 {
     /* init the software uart */
     UART_INIT();

@@ -7,7 +7,7 @@
 /*-------------------------------------------------------------------------------*/
 
 void UART_INIT(void);
-void _tm1() __interrupt 3 __using 1;
+void _tm1(void);
 #ifndef PLATFORMIO
 void putchar(unsigned char);
 #endif
