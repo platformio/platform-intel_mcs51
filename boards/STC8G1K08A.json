@@ -16,7 +16,7 @@
     "maximum_ram_size": 1280,
     "maximum_size": 8192,
     "protocol": "stcgal",
-    "stcgal_protocol": "stc8",
+    "stcgal_protocol": "stc8g",
     "protocols": [
       "stcgal"
     ]
