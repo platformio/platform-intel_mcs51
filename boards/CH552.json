@@ -1,0 +1,20 @@
+{
+    "build": {
+        "f_cpu": "24000000",
+        "size_iram": 256,
+        "size_xram": 1024,
+        "size_code": 14336,
+        "size_heap": 128,
+        "mcu": "ch552",
+        "cpu": "mcs51"
+    },
+    "frameworks": [],
+    "upload": {
+        "maximum_ram_size": 1280,
+        "maximum_size": 14336,
+        "protocol": "ch55x"
+    },
+    "name": "Generic CH552",
+    "url": "https://www.wch.cn/downloads/CH552DS1_PDF.html",
+    "vendor": "WCH"
+}
