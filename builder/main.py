@@ -150,6 +150,8 @@ if upload_protocol == "stcgal":
             stcgal_protocol,
             "-p",
             "$UPLOAD_PORT",
+            "-b",
+            "$UPLOAD_SPEED",
             "-t",
             int(f_cpu_khz),
             "-a",
