@@ -93,6 +93,12 @@ env.Append(
     ],
 )
 
+# Replace debug options
+if env.GetBuildType() == "debug":
+    env.Append(BUILD_UNFLAGS=["-Og", "-g2", "-ggdb2"])
+    env.Append(CFLAGS=["--debug"])
+    env.Append(LINKFLAGS=["--debug"])
+
 if int(ARGUMENTS.get("PIOVERBOSE", 0)):
     env.Prepend(UPLOADERFLAGS=["-v"])
 
