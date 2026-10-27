@@ -19,6 +19,12 @@
     "url": "https://github.com/platformio/platform-intel_mcs51.git"
   },
   "version": "2.2.0",
+  "frameworks": {
+    "arduino": {
+      "package": "framework-ch55xduino",
+      "script": "builder/frameworks/arduino.py"
+    }
+  },
   "packages": {
     "toolchain-sdcc": {
       "type": "toolchain",
@@ -36,6 +42,11 @@
       "optional": true,
       "owner": "platformio",
       "version": "~1.0.220407"
+    },
+    "framework-ch55xduino": {
+      "type": "framework",
+      "optional": true,
+      "version": "~0.26.0"
     }
   }
 }
