@@ -29,7 +29,7 @@
     "toolchain-sdcc": {
       "type": "toolchain",
       "owner": "platformio",
-      "version": ">=1.40100.0,<1.40401.0"
+      "version": ">=1.40400.0,<1.40601.0"
     },
     "tool-stcgal": {
       "type": "uploader",
