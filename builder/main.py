@@ -35,23 +35,19 @@ def __getSize(size_type, env):
     )
 
 
-def _parseSdccFlags(flags):
-    assert flags
-    if isinstance(flags, list):
-        flags = " ".join(flags)
-    flags = str(flags)
+# Extract "--option <value>" or "-Wl linkOption" flags
+def _parseSdccFlags(flags, symbol):
     parsed_flags = []
-    unparsed_flags = []
-    prev_token = ""
-    for token in flags.split(" "):
-        if prev_token.startswith("--") and not token.startswith("-"):
-            parsed_flags.extend([prev_token, token])
-            prev_token = ""
-            continue
-        if prev_token:
-            unparsed_flags.append(prev_token)
-        prev_token = token
-    unparsed_flags.append(prev_token)
+    unparsed_flags = flags[:]
+    for flag in flags:
+        if flag.startswith(symbol):
+            # Split string and throw away -Wl
+            if symbol == "-Wl":
+                idx = 1
+            else:
+                idx = 0
+            parsed_flags.extend(flag.split(" ")[idx:])
+            unparsed_flags.remove(flag)
     return (parsed_flags, unparsed_flags)
 
 
@@ -97,19 +93,31 @@ env.Append(
     ],
 )
 
+# Replace debug options
+if env.GetBuildType() == "debug":
+    env.Append(BUILD_UNFLAGS=["-Og", "-g2", "-ggdb2"])
+    env.Append(CFLAGS=["--debug"])
+    env.Append(LINKFLAGS=["--debug"])
+
 if int(ARGUMENTS.get("PIOVERBOSE", 0)):
     env.Prepend(UPLOADERFLAGS=["-v"])
 
-# parse manually SDCC flags
+# Parse manually SDCC flags
 if env.get("BUILD_FLAGS"):
-    _parsed, _unparsed = _parseSdccFlags(env.get("BUILD_FLAGS"))
+    _parsed, _unparsed = _parseSdccFlags(env.get("BUILD_FLAGS"), "--")
     env.Append(CCFLAGS=_parsed)
     env["BUILD_FLAGS"] = _unparsed
 
 project_sdcc_flags = None
 if env.get("SRC_BUILD_FLAGS"):
-    project_sdcc_flags, _unparsed = _parseSdccFlags(env.get("SRC_BUILD_FLAGS"))
+    project_sdcc_flags, _unparsed = _parseSdccFlags(env.get("SRC_BUILD_FLAGS"), "--")
     env["SRC_BUILD_FLAGS"] = _unparsed
+
+# Same for linker flags
+if env.get("BUILD_FLAGS"):
+    _parsed, _unparsed = _parseSdccFlags(env.get("BUILD_FLAGS"), "-Wl")
+    env.Append(LINKFLAGS=_parsed)
+    env["BUILD_FLAGS"] = _unparsed
 
 #
 # Target: Build executable and linkable firmware
