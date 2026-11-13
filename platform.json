@@ -29,7 +29,7 @@
     "toolchain-sdcc": {
       "type": "toolchain",
       "owner": "platformio",
-      "version": ">=1.40400.0,<1.40601.0"
+      "version": "~1.40500.0"
     },
     "tool-stcgal": {
       "type": "uploader",
@@ -46,7 +46,8 @@
     "framework-ch55xduino": {
       "type": "framework",
       "optional": true,
-      "version": "~0.26.0"
+      "owner": "platformio",
+      "version": "~0.0.26"
     }
   }
 }
