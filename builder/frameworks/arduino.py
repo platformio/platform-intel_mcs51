@@ -58,8 +58,8 @@ env.Append(
         ("double", "float"),
         "USE_STDINT",
         "__PROG_TYPES_COMPAT__",
-        env.BoardConfig().get("build.mcu"),
-        ("F_EXT_OSC", env.BoardConfig().get("build.f_oscillator_external"))
+        board_config.get("build.mcu"),
+        ("F_EXT_OSC", board_config.get("build.f_oscillator_external", "0L"))
     ],
 
     LINKFLAGS=[
@@ -67,7 +67,7 @@ env.Append(
     ],
 
     CPPPATH=[
-        os.path.join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
+        os.path.join(FRAMEWORK_DIR, "cores", board_config.get("build.core", "ch55xduino"))
     ],
 
     LIBSOURCE_DIRS=[
@@ -99,21 +99,21 @@ for root, _, files in os.walk(env.subst("$PROJECT_SRC_DIR")):
 
 libs = []
 
-if "build.variant" in env.BoardConfig():
+if "build.variant" in board_config:
     env.Append(
         CPPPATH=[
             os.path.join(
-                FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
+                FRAMEWORK_DIR, "variants", board_config.get("build.variant"))
         ]
     )
     libs.append(env.BuildLibrary(
         os.path.join("$BUILD_DIR", "FrameworkArduinoVariant"),
-        os.path.join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
+        os.path.join(FRAMEWORK_DIR, "variants", board_config.get("build.variant"))
     ))
 
 libs.append(env.BuildLibrary(
     os.path.join("$BUILD_DIR", "FrameworkArduino"),
-    os.path.join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
+    os.path.join(FRAMEWORK_DIR, "cores", board_config.get("build.core", "ch55xduino"))
 ))
 
 env.Prepend(LIBS=libs)
